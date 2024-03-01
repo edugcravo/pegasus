@@ -9,6 +9,10 @@ import { MenuSuperiorComponent } from './componentes/menu-superior/menu-superior
 import { HomeComponent } from './componentes/home/home.component';
 import { routing } from './app.routing';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { ContatoComponent } from './componentes/contato/contato.component';
+import { RodapeComponent } from './componentes/rodape/rodape.component';
+ // Import the SlickCarouselModule from the correct package
+
 
 
 @NgModule({
@@ -16,6 +20,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
         AppComponent,
         HomeComponent,
         MenuSuperiorComponent,
+        ContatoComponent,
+        RodapeComponent
     ],
     imports: [
         BrowserModule,
@@ -24,6 +30,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
         routing,
         HttpClientModule,
         NzAvatarModule
+        
     ],
     providers: [
     ],

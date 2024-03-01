@@ -30,6 +30,11 @@
     </div>
   </div>
 
+  <slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+    <div *ngFor="let slide of slides" class="slide">
+      <img src="{{ slide.img }}" alt="{{ slide.alt }}">
+    </div>
+  </slick-carousel>
 
   <div class="categorias">
     <div class="titulo_categorias">
@@ -197,3 +202,13 @@
   </div>
 
 </div>
+
+<app-contato></app-contato>
+<app-rodape></app-rodape>
+<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css">
+
+    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="../bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>

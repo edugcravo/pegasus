@@ -1,0 +1,33 @@
+.conteudo{
+    height: 261px;
+    background-color: #FAFAFA;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 75px;
+}
+
+.conteudo h1{
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+
+}
+
+.conteudo p{
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 23px;
+
+}
+
+.conteudo button{
+    background: #0094FF;
+    padding: 8px 18px 8px 18px;
+    border-radius: 41px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}

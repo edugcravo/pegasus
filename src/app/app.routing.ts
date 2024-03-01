@@ -2,12 +2,14 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuSuperiorComponent } from './componentes/menu-superior/menu-superior.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { ContatoComponent } from './componentes/contato/contato.component';
 
 
 
 export const APP_ROUTES: Routes = [
   { path:'', redirectTo:'/home',pathMatch:'full'},
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'contato', component: ContatoComponent }
 ];
 
 
