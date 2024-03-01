@@ -1,3 +1,5 @@
+@import 'primeng/resources/themes/saga-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
 .banner{
     height: 640px;
     background-image: url('../../../assets/imagens/banner.png');
@@ -128,8 +130,17 @@
     font-weight: 300;
     line-height: 18px;
     
-    
+}
 
+.categorias{
+    margin-bottom: 150px !important;
+    width: 90%;
+    margin: auto;
+}
+
+::ng-deep .categorias button{
+    border: none;
+    background: transparent;
 }
 
 .categorias_itens{
@@ -138,7 +149,7 @@
     justify-content: space-between;
     width: 80%;
     margin: auto;
-    margin-bottom: 150px;
+
 }
 
 .categoria_item{
@@ -224,6 +235,7 @@
 }
 
 .review{
+
     width: 90%;
     margin: auto;
     display: flex;
@@ -283,6 +295,8 @@
     white-space: nowrap;
     width: 80%;
 }
+
+
 
 /* media querys para celulares e dispositivos */
 @media (max-width: 576px) {

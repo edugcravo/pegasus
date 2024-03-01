@@ -38,77 +38,23 @@
     </div>
 
 
-    <div class="categorias_itens">
-      <div class="categoria_item">
-        <img src="assets/imagens/iphone.png" alt="iPhone 11">
-        <div class="cores">
-          <div class="cor1"></div>
-          <div class="cor2"></div>
-          <div class="cor3"></div>
-          <div class="cor4"></div>
+    <p-carousel [value]="images" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+      <ng-template let-item pTemplate="item">
+        <div class="categoria_item">
+          <img [src]="item.source" [alt]="item.alt">
+          <div class="cores">
+            <div class="cor1"></div>
+            <div class="cor2"></div>
+            <div class="cor3"></div>
+            <div class="cor4"></div>
+          </div>
+          <h2 class="dispositivo">{{ item.title }}</h2>
+          <p class="armazenamento">128GB</p>
+          <p class="partir">a partir de <span class="valor">1.049,90</span></p>
+          <p class="parcelado">ou 10x de R$104,90 sem juros</p>
         </div>
-        <h2 class="dispositivo">iPhone 15 Pro</h2>
-        <p class="armazenamento">128GB</p>
-        <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-        <p class="parcelado">ou 10x de R$104,90 sem juros</p>
-      </div>
-
-      <div class="categoria_item">
-        <img src="assets/imagens/iphone.png" alt="iPhone 11">
-        <div class="cores">
-          <div class="cor1"></div>
-          <div class="cor2"></div>
-          <div class="cor3"></div>
-          <div class="cor4"></div>
-        </div>
-        <h2 class="dispositivo">iPhone 15 Pro</h2>
-        <p class="armazenamento">128GB</p>
-        <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-        <p class="parcelado">ou 10x de R$104,90 sem juros</p>
-      </div>
-
-      <div class="categoria_item">
-        <img src="assets/imagens/iphone.png" alt="iPhone 11">
-        <div class="cores">
-          <div class="cor1"></div>
-          <div class="cor2"></div>
-          <div class="cor3"></div>
-          <div class="cor4"></div>
-        </div>
-        <h2 class="dispositivo">iPhone 15 Pro</h2>
-        <p class="armazenamento">128GB</p>
-        <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-        <p class="parcelado">ou 10x de R$104,90 sem juros</p>
-      </div>
-
-      <div class="categoria_item">
-        <img src="assets/imagens/iphone.png" alt="iPhone 11">
-        <div class="cores">
-          <div class="cor1"></div>
-          <div class="cor2"></div>
-          <div class="cor3"></div>
-          <div class="cor4"></div>
-        </div>
-        <h2 class="dispositivo">iPhone 15 Pro</h2>
-        <p class="armazenamento">128GB</p>
-        <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-        <p class="parcelado">ou 10x de R$104,90 sem juros</p>
-      </div>
-
-      <div class="categoria_item">
-        <img src="assets/imagens/iphone.png" alt="iPhone 11">
-        <div class="cores">
-          <div class="cor1"></div>
-          <div class="cor2"></div>
-          <div class="cor3"></div>
-          <div class="cor4"></div>
-        </div>
-        <h2 class="dispositivo">iPhone 15 Pro</h2>
-        <p class="armazenamento">128GB</p>
-        <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-        <p class="parcelado">ou 10x de R$104,90 sem juros</p>
-      </div>
-    </div>
+      </ng-template>
+    </p-carousel>
   </div>
 
 

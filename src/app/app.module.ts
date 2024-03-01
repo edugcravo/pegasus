@@ -11,6 +11,7 @@ import { routing } from './app.routing';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { ContatoComponent } from './componentes/contato/contato.component';
 import { RodapeComponent } from './componentes/rodape/rodape.component';
+import { CarouselModule } from 'primeng/carousel';
  // Import the SlickCarouselModule from the correct package
 
 
@@ -29,7 +30,8 @@ import { RodapeComponent } from './componentes/rodape/rodape.component';
         ReactiveFormsModule,
         routing,
         HttpClientModule,
-        NzAvatarModule
+        NzAvatarModule,
+        CarouselModule
         
     ],
     providers: [
