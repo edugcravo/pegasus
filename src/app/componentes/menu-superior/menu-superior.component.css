@@ -1,0 +1,24 @@
+.container{
+    background: #121212;
+    height: 44px;
+}
+
+.conteudo{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu ul{
+    display: flex;
+}
+
+.menu ul li{
+    list-style: none;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+}
