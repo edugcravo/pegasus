@@ -58,6 +58,33 @@
   </div>
 
 
+  <div class="categorias">
+    <div class="titulo_categorias_mac">
+      <h1>Produtos Mac</h1>
+      <p>Compre seu Mac aqui na Pegasus. Fale com um de nossos consultores</p>
+    </div>
+
+
+    <p-carousel [value]="imagesAcessorios" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptionsMac">
+      <ng-template let-item pTemplate="item">
+        <div class="categoria_item">
+          <img [src]="item.source" [alt]="item.alt">
+          <div class="cores_mac">
+            <div class="cor1"></div>
+            <div class="cor2"></div>
+            <div class="cor3"></div>
+            <div class="cor4"></div>
+          </div>
+          <h2 class="dispositivo">{{ item.title }}</h2>
+          <p class="armazenamento">128GB</p>
+          <p class="partir">a partir de <span class="valor">1.049,90</span></p>
+          <p class="parcelado">ou 10x de R$104,90 sem juros</p>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
+
   <div class="review">
     <div class="titulo_review">
       <h1>Reviews</h1>
@@ -143,6 +170,63 @@
   </div>
 
 </div>
+
+<div class="perguntas">
+
+  <h1>Perguntas frequentes</h1>
+  
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Como funciona a importação de produtos?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Posso parcelar a compra?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis consectetur cumque commodi nam perspiciatis culpa reprehenderit et, veniam quam eos, iste blanditiis voluptate itaque maiores dolor in, similique quas! Nulla. </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Como faço para comprar um produto?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false" class="ultimo">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Como entro em contato com a loja?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+
+    
+</div>
+
 
 <app-contato></app-contato>
 <app-rodape></app-rodape>

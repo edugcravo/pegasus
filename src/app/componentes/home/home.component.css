@@ -1,5 +1,12 @@
-@import 'primeng/resources/themes/saga-blue/theme.css';
-@import 'primeng/resources/primeng.min.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+.container{
+    max-width: unset;
+}
+
 .banner{
     height: 640px;
     background-image: url('../../../assets/imagens/banner.png');
@@ -9,8 +16,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-}
+    text-align: center;
+}   
 
 .banner button{
     background: #0094FF;
@@ -77,11 +84,10 @@
 
 .texto_esquerda{
     text-align: center;
-    margin-right: 30px;
 }
 
 .texto_esquerda h1, .texto_direita h1{
-    font-size: 34px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 39px;
 }
@@ -106,7 +112,7 @@
 
 .texto_direita{
     text-align: center;
-    margin-left: 30px;
+
 }
 
 .titulo_categorias{
@@ -115,7 +121,14 @@
     margin-bottom: 50px;
 }
 
-.titulo_categorias h1{
+.titulo_categorias_mac{
+    text-align: center;
+    margin-bottom: -50px;
+    position: relative; 
+    z-index: 1001;
+}
+
+.titulo_categorias h1, .titulo_categorias_mac h1{
     font-size: 24px;
     font-weight: 700;
     line-height: 28px;
@@ -123,7 +136,7 @@
 
 }
 
-.titulo_categorias p{
+.titulo_categorias p, .titulo_categorias_mac p{
     color: black;
     margin-top: 10px;
     font-size: 16px;
@@ -131,6 +144,7 @@
     line-height: 18px;
     
 }
+
 
 .categorias{
     margin-bottom: 150px !important;
@@ -164,6 +178,14 @@
     display: flex;
     justify-content: center;
     margin-top: 36px;
+    margin-bottom: 8px;
+}
+
+.cores_mac{
+    gap: 6px;
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
     margin-bottom: 8px;
 }
 
@@ -299,32 +321,114 @@
 
 
 /* media querys para celulares e dispositivos */
-@media (max-width: 576px) {
+@media screen and (max-width: 768px){
     .blocos_secundarios{
         flex-direction: column;
     }
 
     .bloco_esquerda_secundario, .bloco_direita_secundario{
         width: 100%;
+    height: 209.86px;
+
+    }
+
+    .banner{
+        background-size: 150%;
+    }
+    
+    .texto_direita, .texto_esquerda{
+        width: 274px;
+    }
+
+    .bloco_esquerda_secundario{
+        background-position: unset;
+    }
+  
+}
+
+@media screen and (max-width: 570px){
+    .texto_direita, .texto_esquerda{
+        width: 176px;
+    }
+
+    .bloco_esquerda_secundario{
+        background-position: left bottom; 
     }
 }
 
-/* Para dispositivos maiores que smartphones em modo paisagem, como tablets */
-@media (min-width: 576px) and (max-width: 768px) {
-    /* Adicione estilos específicos para essa faixa de largura */
-}
+/* 
+@media screen and (max-width: 375px){
+    .banner{
+        background-size: 100%;
+    }
+} */
 
-/* Para tablets em modo paisagem e dispositivos maiores */
-@media (min-width: 768px) and (max-width: 992px) {
-    /* Adicione estilos específicos para essa faixa de largura */
-}
 
-/* Para laptops e monitores menores */
-@media (min-width: 992px) and (max-width: 1200px) {
-    /* Adicione estilos específicos para essa faixa de largura */
-}
+.accordion {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .accordion-item {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .accordion-content {
+    padding: 10px;
+    display: none;
+  }
+  
+  .accordion-content.active {
+    display: block;
+  }
+  
+  .accordion-icon {
+    width: 24px;
+    height: 24px;
+  }
 
-/* Para monitores maiores e telas de alta resolução */
-@media (min-width: 1200px) {
-    /* Adicione estilos específicos para essa faixa de largura */
-}
+  .perguntas h1{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 30px;
+  }
+
+  .perguntas{
+    width: 60%;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 150px;
+  }
+
+  ::ng-deep mat-expansion-panel{
+     box-shadow: none !important; 
+     padding: 10px 0 10px 0 !important;
+  }
+
+  /* aplicar borda inferior menos no ultimo */
+    ::ng-deep mat-expansion-panel{
+        border-bottom: 1px solid #ddd !important;
+    }
+
+  ::ng-deep mat-panel-title{
+    font-weight: 700 !important;
+    font-size: 18px !important;
+  }
+
+    ::ng-deep mat-expansion-panel p{
+        font-size: 16px !important;
+    }
+
+    .ultimo{
+        border-bottom: none !important;
+    }

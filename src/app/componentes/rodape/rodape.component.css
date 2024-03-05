@@ -23,3 +23,26 @@
 .redes img{
     margin-left: 16px;
 }
+
+@media (max-width: 768px){
+    .rodape{
+        width: 90%;
+       }
+
+    .rodape img{
+        width: 25px;
+    }
+    
+       .redes{
+        display: flex;
+       }
+    
+       .redes img{
+        margin-left: 0px;
+       }
+    
+       .rodape p{
+        font-size: 9px;
+        text-align: center;
+       }
+}

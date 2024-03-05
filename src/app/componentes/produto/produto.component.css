@@ -1,0 +1,206 @@
+.info_produto{
+    display: flex;
+    width: 60%;
+    margin: auto;
+}
+
+.categoria{
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+/* .fotos_produto, .desc_produto{
+    width: 30%;
+} */
+
+.foto_principal{
+    background: #F5F5F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniaturas{
+    margin-top: 10px;
+    display: flex;
+    gap: 25px;
+}
+
+.desc_produto{
+    margin-left: 30px;
+}
+
+.titulo{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.desconto{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 14px 5px 14px;
+    border-radius: 61px;
+    background: #000000;
+    color: white;
+    border: none;
+}   
+
+.valor{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    margin-bottom: 5px;
+}
+
+.valor span{
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.parcelado b{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+
+}
+
+.parcelado{
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+}
+
+.cor{
+    margin-top: 15px;
+}
+
+.cor p{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+
+}
+
+.cores{
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.cor_1{
+    width: 24px;
+    height: 24px;
+    background: #223E4A;
+    border-radius: 50%;
+
+}
+
+.cor_2{
+    width: 24px;
+    height: 24px;
+    background: #FAE6C9;
+    border-radius: 50%;
+
+}
+
+.cor_3{
+    width: 24px;
+    height: 24px;
+    background: #403F3C;
+    border-radius: 50%;
+
+}
+
+.cor_4{
+    background: #DCDED8;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.armazenamento{
+    margin-top: 15px;
+}
+
+.armazenamento p{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    margin-bottom: 8px;
+}
+
+.armazenamento_opcoes{
+    display: flex;
+    gap: 10px;
+}
+
+.armazenamento_opcoes button{
+    border: 1px solid #EFEFEF;
+    background-color: white;
+    padding: 5px 14px 5px 14px;
+    border-radius: 61px;
+
+}
+
+.prazo{
+    margin-top: 15px;
+}
+
+.prazo p{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.prazo input{
+    border: 1px solid #EFEFEF;
+    border-radius: 61px;
+    padding: 8px 12px;
+    margin-top: 8px;
+}
+
+.consultor{
+    background: #0094FF;
+    padding: 8px 18px 8px 18px;
+    border-radius: 41px;
+    border: none;
+    margin-top: 15px;
+    color: white;
+}
+
+.detalhes h1{
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.detalhes p{
+    color: #656565;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.produtos_relacionados{
+    width: 80%;
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+    margin-bottom: 150px;
+}
+
+.desc_relacionados {
+    margin-bottom: 50px;
+}
+
+::ng-deep .produtos_relacionados button{
+    border: none;
+    background: transparent;
+}

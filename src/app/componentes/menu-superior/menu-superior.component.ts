@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-menu-superior',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuSuperiorComponent implements OnInit {
 
+  items: MenuItem[] | undefined;
+
   constructor() { }
 
   ngOnInit() {
+
+    
   }
 
+
+  
 }

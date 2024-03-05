@@ -1,16 +1,14 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-produto',
+  templateUrl: './produto.component.html',
+  styleUrls: ['./produto.component.css']
 })
-export class HomeComponent implements OnInit {
-  
-
-  panelOpenState = false;
+export class ProdutoComponent implements OnInit {
 
   constructor() { }
+
   ngOnInit() {
   }
 
@@ -21,12 +19,6 @@ export class HomeComponent implements OnInit {
     {source:'assets/imagens/iphone.png', alt:'Description for Image 4', title:'iPhone 15 '},
     {source:'assets/imagens/iphone.png', alt:'Description for Image 5', title:'iPhone 14 Pro Max'},
   ];
-
-  imagesAcessorios = [
-    {source:'assets/imagens/macbook_air_m1.avif', alt:'Description for Image 1', title:'MacBook Air m1'},
-    {source:'assets/imagens/macbook_air_m2.avif', alt:'Description for Image 1', title:'MacBook Air m2'},
-    {source:'assets/imagens/macbook_pro.png', alt:'Description for Image 2', title:'MacBook pro'},
-  ]
   
   responsiveOptions = [
     {
@@ -41,19 +33,6 @@ export class HomeComponent implements OnInit {
     },
     {
       breakpoint: '560px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
-
-  responsiveOptionsMac = [
-    {
-      breakpoint: '1024px',
-      numVisible: 2,
-      numScroll: 2
-    },
-    {
-      breakpoint: '768px',
       numVisible: 1,
       numScroll: 1
     }

@@ -1,0 +1,91 @@
+<app-menu-superior></app-menu-superior>
+<div class="container">
+    <div class="conteudo">
+
+        <div class="produto">
+            <p class="categoria">Home > iPhone 13</p>
+            <div class="info_produto">
+                <div class="fotos_produtos">
+                    <div class="foto_principal">
+                        <img src="assets/imagens/produto.png" alt="">
+                    </div>
+
+                    <div class="miniaturas">
+                        <img src="assets/imagens/foto1_produto.png" alt="">
+                        <img src="assets/imagens/foto2_produto.png" alt="">
+                        <img src="assets/imagens/foto3_produto.png" alt="">
+                        <img src="assets/imagens/foto4_produto.png" alt="">
+                        <img src="assets/imagens/foto5_produto.png" alt="">
+                    </div>
+                </div>
+
+                <div class="desc_produto">
+                    <h1 class="titulo">iPhone 13</h1>
+                    <button class="desconto">-30%</button>
+                    <p class="valor"><span>R$1.049,90</span> no PIX</p>
+                    <p class="parcelado">ou <b>10x</b> de <b>R$104,90</b> sem juros</p>
+
+                    <div class="cor">
+                        <p>Cor</p>
+                        <div class="cores">
+                            <div class="cor_1"></div>
+                            <div class="cor_2"></div>
+                            <div class="cor_3"></div>
+                            <div class="cor_4"></div>
+                        </div>
+                    </div>
+
+                    <div class="armazenamento">
+                        <p>Armazenamento:</p>
+                        <div class="armazenamento_opcoes">
+                            <button class="opcao">128GB</button>
+                            <button class="opcao">256GB</button>
+                        </div>
+                    </div>
+
+                    <div class="prazo">
+                        <p>Calcular o prazo de entrega</p>
+                        <input type="text" placeholder="Insira seu CEP">
+                    </div>
+                        
+                    <button class="consultor">Falar com consultor</button>
+
+                    <div class="detalhes">
+                        <h1>Detalhes do produto</h1>
+                        <p>Made possible by exploring innovative molded plywood techniques, Iskos-Berlin's Soft Edge Chair blends strong curves with extreme lightness to create a three-dimensionality not usually possible with 2-D plywood.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="produtos_relacionados">
+            <h1>Produtos relacionados</h1>
+            <p class="desc_relacionados">Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
+
+
+            <p-carousel [value]="images" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+                <ng-template let-item pTemplate="item">
+                  <div class="categoria_item">
+                    <img [src]="item.source" [alt]="item.alt">
+                    <div class="cores">
+                      <div class="cor1"></div>
+                      <div class="cor2"></div>
+                      <div class="cor3"></div>
+                      <div class="cor4"></div>
+                    </div>
+                    <h2 class="dispositivo">{{ item.title }}</h2>
+                    <p class="armazenamento">128GB</p>
+                    <p class="partir">a partir de <span class="valor">1.049,90</span></p>
+                    <p class="parcelado">ou 10x de R$104,90 sem juros</p>
+                  </div>
+                </ng-template>
+              </p-carousel>
+        </div>
+        
+    </div>
+</div>
+
+<app-contato></app-contato>
+<app-rodape></app-rodape>

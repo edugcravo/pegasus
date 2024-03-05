@@ -1,0 +1,115 @@
+<app-menu-superior></app-menu-superior>
+<p class="categoria">Home > iPhone 13</p>
+<div class="info_produto">
+    <div class="fotos_produtos">
+        <div class="foto_principal">
+            <img src="assets/imagens/produto.png" alt="">
+        </div>
+
+        <div class="miniaturas">
+            <img src="assets/imagens/foto1_produto.png" alt="">
+            <img src="assets/imagens/foto2_produto.png" alt="">
+            <img src="assets/imagens/foto3_produto.png" alt="">
+            <img src="assets/imagens/foto4_produto.png" alt="">
+            <img src="assets/imagens/foto5_produto.png" alt="">
+        </div>
+    </div>
+
+    <div class="desc_produto">
+        <h1 class="titulo">{{modelo}}</h1>
+        
+
+        <button class="desconto">-{{desconto}}%</button>
+        <p class="valor" ><span>R${{preco}}</span> no PIX</p>
+        <p class="parcelado">ou <b>10x</b> de <b>R${{parcelado}}</b> sem juros</p>
+
+        <div class="cor">
+            <p>Cor</p>
+            <div class="cores">
+                <div class="cor_1"></div>
+                <div class="cor_2"></div>
+                <div class="cor_3"></div>
+                <div class="cor_4"></div>
+            </div>
+        </div>
+
+        <div class="armazenamento">
+            <p>Armazenamento:</p>
+            <div class="armazenamento_opcoes">
+                <button class="opcao" *ngFor="let item of armazenamento">{{item}}GB</button>
+            </div>
+        </div>
+
+        <div class="prazo">
+            <p>Calcular o prazo de entrega</p>
+            <input type="text" placeholder="Insira seu CEP">
+        </div>
+            
+        <button class="consultor">Falar com consultor</button>
+
+        <div class="detalhes">
+            <h1>Detalhes do produto</h1>
+            <p>{{descricao}}</p>
+        </div>
+
+    </div>
+</div>
+  
+<div class="conteudo_cadastro">
+
+  <h1>Cadastrar produto</h1>
+
+  <form action="" (ngSubmit)="onSubmit()">
+      <div class="cadastro_modelo">
+          <label for="nome_produto" >Modelo:</label>
+          <input type="text" [(ngModel)]="modelo" name="modelo">
+      </div>
+
+      <div class="cadastro_desconto">
+          <label for="desconto_produto" >Desconto:</label>
+          <input type="number" [(ngModel)]="desconto" name="desconto">
+      </div>
+      
+      <div class="cadastro_preco">
+          <label for="preco_produto" >Preço:</label>
+          <input type="text" [(ngModel)]="preco" (input)="arrumaParcelado()" name="preco">
+      </div>
+
+      <div class="cadastro_cor">
+          <label>Cor:</label>
+          <div class="cores">
+              <div class="cor_1"></div>
+              <div class="cor_2"></div>
+              <div class="cor_3"></div>
+              <div class="cor_4"></div>
+          </div>
+      </div>
+
+      <div class="cadastro_armazenamento">
+          <label>Armazenamento:</label>
+          <div class="armazenamento_opcoes">
+            <div class="armazenamento_opcoes">
+              <nz-select nzAllowClear nzPlaceHolder="Select OS" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="armazenamento" name="armazenamento">
+                <nz-option nzLabel="64GB" nzValue="64"></nz-option>
+                <nz-option nzLabel="128GB" nzValue="128"></nz-option>
+                <nz-option nzLabel="256GB" nzValue="256"></nz-option>
+              </nz-select>
+              <ng-template #multipleTemplate let-selected>
+                <div class="ant-select-selection-item-content">
+                  {{ selected.nzLabel }}
+
+                </div>
+              </ng-template>
+            </div>
+          </div>
+      </div>
+
+      <div class="cadastro_descricao">
+          <label >Descrição:</label>
+          <textarea [(ngModel)]="descricao" name="descricao"></textarea>
+      </div>
+
+
+      <button type="submit">Cadastrar Produto</button>
+  </form>
+</div>

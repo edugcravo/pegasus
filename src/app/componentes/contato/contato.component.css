@@ -31,3 +31,10 @@
     color: white;
     margin-top: 10px;
 }
+
+@media (max-width: 768px){
+   .conteudo h1{
+    font-size: 34px;
+   }
+
+}

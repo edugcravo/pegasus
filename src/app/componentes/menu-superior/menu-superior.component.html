@@ -1,18 +1,48 @@
 <div class="container">
   <div class="conteudo">
     <div class="logo">
-      <img src="assets/imagens/logo.png" alt="">
+      <img src="assets/imagens/logo.png" alt="logo para desktop" class="desktop">
+      <img src="assets/imagens/logo_celular.png" alt="logo para celular" class="celular">
+    
     </div>
 
 
     <div class="menu">
       <ul>
-        <li><a >iPhones</a></li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu" class="botao-menu">Produtos</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Iphones</button>
+            <button mat-menu-item [matMenuTriggerFor]="acessorios">Acessórios Apple</button>
+            <button mat-menu-item [matMenuTriggerFor]="macbooks">MacBooks</button>
+            <button mat-menu-item [matMenuTriggerFor]="ipads">Ipads</button>
+          </mat-menu>
+
+          <mat-menu #acessorios="matMenu">
+            <button mat-menu-item>Capinhas</button>
+            <button mat-menu-item>Carregadores</button>
+            <button mat-menu-item>Fones</button>
+          </mat-menu>
+
+          <mat-menu #macbooks="matMenu">
+            <button mat-menu-item>MacBook Air</button>
+            <button mat-menu-item>MacBook Pro</button>
+            <button mat-menu-item>MacBook M2</button>
+          </mat-menu>
+
+          <mat-menu #ipads="matMenu">
+            <button mat-menu-item>Ipad Air</button>
+            <button mat-menu-item>Ipad Pro</button>
+            <button mat-menu-item>Ipad Mini</button>
+          </mat-menu>
+
+        </li>
         <li><a >Contato</a></li>
         <li><a >Sobre</a></li>
       </ul>
     </div>
 
+    
   </div>
 
 
