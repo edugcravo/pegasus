@@ -3,43 +3,36 @@
     <div class="conteudo">
 
         <div class="produto">
-            <p class="categoria">Home > iPhone 13</p>
+            <p class="categoria">Home > {{produto?.nome}}</p>
             <div class="info_produto">
                 <div class="fotos_produtos">
                     <div class="foto_principal">
-                        <img src="assets/imagens/produto.png" alt="">
+                        <img [src]="imagemPrincipal" alt="">
                     </div>
 
                     <div class="miniaturas">
-                        <img src="assets/imagens/foto1_produto.png" alt="">
-                        <img src="assets/imagens/foto2_produto.png" alt="">
-                        <img src="assets/imagens/foto3_produto.png" alt="">
-                        <img src="assets/imagens/foto4_produto.png" alt="">
-                        <img src="assets/imagens/foto5_produto.png" alt="">
+                        <img [src]="item" alt="" *ngFor="let item of produto.imagens" (click)="mudarFotoPrincipal(item)"> 
                     </div>
                 </div>
 
                 <div class="desc_produto">
-                    <h1 class="titulo">iPhone 13</h1>
-                    <button class="desconto">-30%</button>
-                    <p class="valor"><span>R$1.049,90</span> no PIX</p>
+                    <h1 class="titulo">{{produto?.nome}}</h1>
+                    <button class="desconto">-{{produto?.desconto}}%</button>
+                    <p class="valor"><span>R${{produto?.preco}}</span> no PIX</p>
                     <p class="parcelado">ou <b>10x</b> de <b>R$104,90</b> sem juros</p>
 
                     <div class="cor">
                         <p>Cor</p>
                         <div class="cores">
-                            <div class="cor_1"></div>
-                            <div class="cor_2"></div>
-                            <div class="cor_3"></div>
-                            <div class="cor_4"></div>
+                            <div class="cor_1" *ngFor="let item of produto.cores" [style.background-color]="item.hexadecimal"></div>
+
                         </div>
                     </div>
 
                     <div class="armazenamento">
                         <p>Armazenamento:</p>
                         <div class="armazenamento_opcoes">
-                            <button class="opcao">128GB</button>
-                            <button class="opcao">256GB</button>
+                            <button class="opcao" *ngFor="let item of produto.armazenamento">{{item}}</button>
                         </div>
                     </div>
 
@@ -52,7 +45,7 @@
 
                     <div class="detalhes">
                         <h1>Detalhes do produto</h1>
-                        <p>Made possible by exploring innovative molded plywood techniques, Iskos-Berlin's Soft Edge Chair blends strong curves with extreme lightness to create a three-dimensionality not usually possible with 2-D plywood.</p>
+                        <p>{{produto?.descricao}}</p>
                     </div>
 
                 </div>

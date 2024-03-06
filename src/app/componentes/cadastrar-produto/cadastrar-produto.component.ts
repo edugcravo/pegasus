@@ -19,7 +19,7 @@ export class CadastrarProdutoComponent implements OnInit {
 
   modelo: any = 'iPhone 13';
   desconto: any = '30';
-  preco: any = '1049,90';
+  preco: any = '1.049,90';
   parcelado: any = '104,99';
   armazenamento: any = ['5','3', '1'];
   armazenamentoDemonstracao: any = [];
@@ -37,6 +37,7 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.miniatura)
     let cores = this.cores.map((cor: any) => cor.id);
     let armazenamento = this.armazenamento.map((armazenamento: any) => armazenamento.id);
 

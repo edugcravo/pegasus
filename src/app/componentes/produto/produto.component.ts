@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../services/produto.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-produto',
@@ -8,10 +10,14 @@ import { ProdutoService } from '../services/produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
-  constructor(private produtoService: ProdutoService) { }
+  idProduto: any = localStorage.getItem('idProduto');
+  produto: any;
+  imagemPrincipal: any;
+  
+  constructor(private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router, private _sanitizer:DomSanitizer) { }
 
   ngOnInit() {
-
+    this.recebeProduto()
   }
 
   images = [
@@ -40,5 +46,21 @@ export class ProdutoComponent implements OnInit {
     }
   ];
 
+  recebeProduto(){
+    this.produtoService.getProdutoId(localStorage.getItem('idProduto')).subscribe((res: any) => {
+      console.log(res)
+      this.produto = res.produto
+      this.imagemPrincipal = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + this.produto.imagens[0]);
+      // Sanitizar imagens
+      this.produto.imagens.forEach((element: any, index: number) => {
+        this.produto.imagens[index] = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element);
+      });
+  
+      console.log(this.produto)
+    });
+  }
 
+  mudarFotoPrincipal(imagem: any){
+    this.imagemPrincipal = imagem
+  }
 }

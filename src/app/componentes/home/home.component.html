@@ -38,20 +38,20 @@
     </div>
 
 
-    <p-carousel [value]="images" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="produtos" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
       <ng-template let-item pTemplate="item">
-        <div class="categoria_item">
-          <img [src]="item.source" [alt]="item.alt">
+        <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)">
+          <img  [src]="item.miniatura">
           <div class="cores">
             <div class="cor1"></div>
             <div class="cor2"></div>
             <div class="cor3"></div>
             <div class="cor4"></div>
           </div>
-          <h2 class="dispositivo">{{ item.title }}</h2>
-          <p class="armazenamento">128GB</p>
-          <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-          <p class="parcelado">ou 10x de R$104,90 sem juros</p>
+          <h2 class="dispositivo">{{ item.nome }}</h2>
+          <p class="armazenamento">{{ maiorArmazenamento([item]) }}</p>
+          <p class="partir">a partir de <span class="valor">{{ item.preco }}</span></p>
+          <p class="parcelado">ou 10x de {{ formatarParcelado(item.preco) }}</p>
         </div>
       </ng-template>
     </p-carousel>

@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ProdutoService } from '../services/produto.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +12,9 @@ export class HomeComponent implements OnInit {
   
 
   panelOpenState = false;
+  produtos: any;
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService, private _sanitizer:DomSanitizer, private router: Router) { }
   ngOnInit() {
     this.recebeProdutos()
   }
@@ -63,7 +66,51 @@ export class HomeComponent implements OnInit {
 
   recebeProdutos(){
     this.produtoService.getProdutos().subscribe((res: any) => {
-      console.log(res)
+      this.produtos = res.produtos
+      console.log(this.produtos)
+
+       this.produtos.forEach((element: any) => {
+        element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
+       });
+    
+
+      // console.log(this.produtos)
     })
   }
+
+  maiorArmazenamento(produtos: any[]): string {
+    let maior = 0;
+    produtos.forEach((produto) => {
+      produto.armazenamento.forEach((armazenamento: any) => {
+        const gb = parseInt(armazenamento.replace('GB', ''));
+        if (gb > maior) {
+          maior = gb;
+        }
+      });
+    });
+    return `${maior}GB`;
+  }
+
+
+  formatarParcelado(preco: any): string {
+    // Remove todos os caracteres não numéricos
+    let precoNumerico = preco.replace(/\D/g, "");
+
+    // Adiciona a vírgula como separador decimal
+    precoNumerico = precoNumerico.replace(/(\d)(\d{2})$/, "$1,$2");
+
+    // Calcula o valor da parcela
+    let parcelado = parseFloat(precoNumerico) / 10;
+
+    // Formata o valor da parcela
+    return parcelado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+redirecionarParaOproduto(id: any) {
+  localStorage.setItem('idProduto', id);
+  this.router.navigate(['/produto']);
+}
+
+
+  
 }

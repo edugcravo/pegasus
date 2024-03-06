@@ -16,16 +16,26 @@
 } */
 
 .foto_principal{
-    background: #F5F5F7;
+    /* background: #F5F5F7; */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.foto_principal img{
+    width: 366px;
+    height: 366px;
 }
 
 .miniaturas{
     margin-top: 10px;
     display: flex;
     gap: 25px;
+}
+
+.miniaturas img{
+    width: 98px;
+    height: 98px;
 }
 
 .desc_produto{
@@ -154,13 +164,13 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 15px;
+    margin-bottom: 8px;
 }
 
 .prazo input{
     border: 1px solid #EFEFEF;
     border-radius: 61px;
     padding: 8px 12px;
-    margin-top: 8px;
 }
 
 .consultor{
@@ -203,4 +213,37 @@
 ::ng-deep .produtos_relacionados button{
     border: none;
     background: transparent;
+}
+
+@media (max-width: 1050px){
+    .info_produto{
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 900px){
+    .info_produto{
+        flex-direction: column;
+    align-items: center;
+    }
+
+    .miniaturas{
+        width: 100%;
+    }
+
+    /* se tiver 4 imagens dividir a porcentagem em 4, se tiver em 3 divida em 3 */
+    .miniaturas img{
+        width: 20%;
+    }
+    
+
+    .categoria{
+        width: 90%;
+    }
+
+    .desc_produto{
+        margin-top: 25px;
+        margin-left: unset;
+    }
 }
