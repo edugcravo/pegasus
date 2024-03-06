@@ -91,6 +91,12 @@
     margin-top: 8px;
 }
 
+.cores div{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
 .cor_1{
     width: 24px;
     height: 24px;
@@ -234,4 +240,21 @@ form nz-select{
     border-radius: 10px;
     background: #F5F5F7;
     margin-bottom: 80px !important;
+}
+
+.bloco_container{
+    padding-bottom: 20px;
+}
+
+.miniatura{
+    border-top: 1px solid #d9d9d9;
+    padding-top: 30px;
+}
+
+.imagens_produto{
+    padding-bottom: 30px;
+}
+
+::ng-deep nz-upload{
+    display: flex !important;
 }

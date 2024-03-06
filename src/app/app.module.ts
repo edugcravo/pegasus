@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
  // Import the SlickCarouselModule from the correct package
 
 
@@ -46,7 +48,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
         NzSelectModule,
         BrowserAnimationsModule,
         MatMenuModule,
-        MatExpansionModule
+        MatExpansionModule,
+        NzUploadModule,
+        NzModalModule
         
     ],
     providers: [

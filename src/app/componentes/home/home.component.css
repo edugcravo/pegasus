@@ -84,6 +84,7 @@
 
 .texto_esquerda{
     text-align: center;
+    margin-right: 30px;
 }
 
 .texto_esquerda h1, .texto_direita h1{
@@ -112,7 +113,7 @@
 
 .texto_direita{
     text-align: center;
-
+    margin-left: 30px;
 }
 
 .titulo_categorias{
@@ -247,13 +248,13 @@
     margin-bottom: 8px;
 }
 .bloco_review {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%), url('../../../assets/imagens/fundo_review1.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
     width: 238px;
     height: 372px;
     border-radius: 14px;
+}
+
+.bloco_review iframe{
+    border-radius: 13px;
 }
 
 .review{
@@ -313,10 +314,14 @@
 .blocos_review{
     gap: 30px;
     display: flex;
+    justify-content: center;
     overflow-x: auto; /* barra lateral horizontal quando necessário */
     white-space: nowrap;
     width: 80%;
+
 }
+
+
 
 
 
@@ -338,10 +343,15 @@
     
     .texto_direita, .texto_esquerda{
         width: 274px;
+        margin: 0;
     }
 
     .bloco_esquerda_secundario{
         background-position: unset;
+    }
+
+    .perguntas{
+        width: 90% !important;
     }
   
 }
@@ -349,10 +359,15 @@
 @media screen and (max-width: 570px){
     .texto_direita, .texto_esquerda{
         width: 176px;
+        margin: 0;
     }
 
     .bloco_esquerda_secundario{
         background-position: left bottom; 
+    }
+
+    .perguntas{
+        width: 90% !important;
     }
 }
 
