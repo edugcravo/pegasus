@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,9 @@ export class HomeComponent implements OnInit {
 
   panelOpenState = false;
 
-  constructor() { }
+  constructor(private produtoService: ProdutoService) { }
   ngOnInit() {
+    this.recebeProdutos()
   }
 
   images = [
@@ -58,4 +60,10 @@ export class HomeComponent implements OnInit {
       numScroll: 1
     }
   ];
+
+  recebeProdutos(){
+    this.produtoService.getProdutos().subscribe((res: any) => {
+      console.log(res)
+    })
+  }
 }

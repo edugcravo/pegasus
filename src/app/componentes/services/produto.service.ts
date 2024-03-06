@@ -22,6 +22,10 @@ cadastrarProduto(dados: any){
   return this.http.post(this.url + '/produto/cadastrar', dados, {headers: this.headers});
 }
 
+getProdutos(){
+  return this.http.get(this.url + '/produto/listar', {headers: this.headers});
+}
+
 getCores(){
   return this.http.get(this.url + '/cores/listar', {headers: this.headers});
 }

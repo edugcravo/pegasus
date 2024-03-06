@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-produto',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {
+
   }
 
   images = [
@@ -37,4 +39,6 @@ export class ProdutoComponent implements OnInit {
       numScroll: 1
     }
   ];
+
+
 }
