@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
-import { ProdutoService } from '../services/produto.service';
+import { ProdutoService } from '../../services/produto.service';
 import Swal from 'sweetalert2'
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
@@ -28,6 +28,7 @@ export class CadastrarProdutoComponent implements OnInit {
   coresDemonstracao: any = [];
   imagens: any = []
   miniatura: any;
+  categoria: any;
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -56,7 +57,8 @@ export class CadastrarProdutoComponent implements OnInit {
       data_cadastro: '',
       ativo: true,
       imagens: this.imagens,
-      miniatura: this.miniatura
+      miniatura: this.miniatura,
+      categoria: this.categoria
     }
 
     this.produtoService.cadastrarProduto(dados).subscribe((res: any) => {

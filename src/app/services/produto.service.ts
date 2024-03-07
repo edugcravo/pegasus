@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,10 @@ getProdutoId(id: any){
   return this.http.get(this.url + '/produto/lista-id/' + id, {headers: this.headers});
 }
 
+getProdutoCategoria(categoria: any){
+  return this.http.get(this.url + '/produto/lista-categoria/' + categoria, {headers: this.headers});
+}
+
 getCores(){
   return this.http.get(this.url + '/cores/listar', {headers: this.headers});
 }
@@ -38,4 +42,8 @@ getArmazenamento(){
   return this.http.get(this.url + '/armazenamento/listar', {headers: this.headers});
 }
 
+
+getCategorias(){
+  return this.http.get(this.url + '/produto/categorias', {headers: this.headers});
+}
 }

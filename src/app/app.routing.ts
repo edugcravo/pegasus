@@ -6,6 +6,7 @@ import { ContatoComponent } from './componentes/contato/contato.component';
 import { ProdutoComponent } from './componentes/produto/produto.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { CadastrarProdutoComponent } from './componentes/cadastrar-produto/cadastrar-produto.component';
+import { CategoriasComponent } from './componentes/categorias/categorias.component';
 
 
 
@@ -15,7 +16,8 @@ export const APP_ROUTES: Routes = [
   { path: 'contato', component: ContatoComponent },
   { path: 'produto', component: ProdutoComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cadastra', component: CadastrarProdutoComponent }
+  { path: 'cadastra', component: CadastrarProdutoComponent },
+  { path: 'categorias', component: CategoriasComponent }
 ];
 
 

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="conteudo">
-    <div class="logo">
-      <img src="assets/imagens/logo.png" alt="logo para desktop" class="desktop">
-      <img src="assets/imagens/logo_celular.png" alt="logo para celular" class="celular">
+    <div class="logo" >
+      <img src="assets/imagens/logo.png" alt="logo para desktop" class="desktop" routerLink="/home">
+      <img src="assets/imagens/logo_celular.png" alt="logo para celular" class="celular" routerLink="/home">
     
     </div>
 
@@ -12,16 +12,9 @@
         <li>
           <button mat-button [matMenuTriggerFor]="menu" class="botao-menu">Produtos</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>Iphones</button>
-            <button mat-menu-item [matMenuTriggerFor]="acessorios">Acessórios Apple</button>
-            <button mat-menu-item [matMenuTriggerFor]="macbooks">MacBooks</button>
-            <button mat-menu-item [matMenuTriggerFor]="ipads">Ipads</button>
-          </mat-menu>
-
-          <mat-menu #acessorios="matMenu">
-            <button mat-menu-item>Capinhas</button>
-            <button mat-menu-item>Carregadores</button>
-            <button mat-menu-item>Fones</button>
+            <button mat-menu-item (click)="redirecionaCategoria('iphone')">Iphones</button>
+            <button mat-menu-item [matMenuTriggerFor]="macbooks" (click)="redirecionaCategoria('macbook')">MacBooks</button>
+            <button mat-menu-item [matMenuTriggerFor]="ipads" (click)="redirecionaCategoria('ipad')">Ipads</button>
           </mat-menu>
 
           <mat-menu #macbooks="matMenu">

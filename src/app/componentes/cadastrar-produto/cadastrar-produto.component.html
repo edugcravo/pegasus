@@ -103,6 +103,15 @@
             <textarea [(ngModel)]="descricao" name="descricao"></textarea>
         </div>
 
+        <div class="cadastro_categoria">
+            <label>Categoria:</label>
+            <nz-select nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="categoria" name="categoria">
+                <nz-option nzLabel="Iphone" nzValue="iphone"></nz-option>
+                <nz-option nzLabel="Macbook" nzValue="macbook"></nz-option>
+                <nz-option nzLabel="Ipad" nzValue="ipad"></nz-option>
+            </nz-select>
+        </div>
+
         <div class="imagens_produto">
             <nz-upload
             nzListType="picture-card"

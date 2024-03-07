@@ -22,6 +22,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { CategoriasComponent } from './componentes/categorias/categorias.component';
  // Import the SlickCarouselModule from the correct package
 
 
@@ -35,7 +36,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
         RodapeComponent,
         ProdutoComponent,
         LoginComponent,
-        CadastrarProdutoComponent
+        CadastrarProdutoComponent,
+        CategoriasComponent
     ],
     imports: [
         BrowserModule,
