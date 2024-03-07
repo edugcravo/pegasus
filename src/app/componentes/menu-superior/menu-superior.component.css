@@ -12,6 +12,7 @@ a{
 
 .logo img{
     width: 155px;
+    cursor: pointer;
 }
 
 .botao-menu{
@@ -79,3 +80,6 @@ a{
     }
 }
 
+::ng-deep mat-mdc-menu-item mat-mdc-focus-indicator ng-tns-c185672549-34{
+    padding: 10px !important;
+}

@@ -4,14 +4,14 @@
   <div class="bg-gray-200 h-screen">
     <h2 class="text-xl font-bold p-4">Categorias</h2>
     <ul class="p-4">
-      <li class="mb-2" *ngFor="let item of categorias"><a class="text-blue-500 hover:underline">{{item}}</a></li>
+      <li class="mb-2" *ngFor="let item of categorias"><a class="text-blue-500 hover:underline" (click)="recebeProdutos(item)">{{item}}</a></li>
     </ul>
   </div>
   <div class="w-3/4 p-8">
     <h1 class="text-3xl font-bold mb-8">{{categoria}}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" >
-      <div class="bg-white rounded-lg shadow-lg p-4 categoria_item img_celular" *ngFor="let item of produtos">
+      <div class="bg-white rounded-lg shadow-lg p-4 categoria_item img_celular" *ngFor="let item of produtos" (click)="redirecionarParaOproduto(item.id)">
         <img [src]="item.miniatura" alt="Produto">
         <div class="cores">
           <div class="cor_1" *ngFor="let item of item.cores" [style.background-color]="item.hexadecimal"></div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../../services/produto.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias',
@@ -13,16 +14,16 @@ export class CategoriasComponent implements OnInit {
   produtos: any;
   categorias: any;
 
-  constructor(private produtoService: ProdutoService, private _sanitizer: DomSanitizer) { }
+  constructor(private produtoService: ProdutoService, private _sanitizer: DomSanitizer, private router:Router) { }
 
   ngOnInit() {
     this.recebeCategorias()
-    this.recebeProdutos()
+    this.recebeProdutos(this.categoria)
   }
 
 
-  recebeProdutos(){
-    this.produtoService.getProdutoCategoria(this.categoria).subscribe((res: any) => {
+  recebeProdutos(categoria: any){
+    this.produtoService.getProdutoCategoria(categoria).subscribe((res: any) => {
       this.produtos = res.produtos;
 
 
@@ -55,4 +56,10 @@ recebeCategorias(){
     this.categorias = res.categorias
   })
 }
+
+redirecionarParaOproduto(id: any) {
+  localStorage.setItem('idProduto', id);
+  this.router.navigate(['/produto']);
+}
+
 }
