@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="miniaturas">
-                        <img [src]="item" alt="" *ngFor="let item of produto.imagens" (click)="mudarFotoPrincipal(item)"> 
+                        <img [src]="item" alt="" *ngFor="let item of produto?.imagens" (click)="mudarFotoPrincipal(item)"> 
                     </div>
                 </div>
 
@@ -24,7 +24,7 @@
                     <div class="cor">
                         <p>Cor</p>
                         <div class="cores">
-                            <div class="cor_1" *ngFor="let item of produto.cores" [style.background-color]="item.hexadecimal"></div>
+                            <div class="cor_1" *ngFor="let item of produto?.cores" [style.background-color]="item?.hexadecimal"></div>
 
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="armazenamento">
                         <p>Armazenamento:</p>
                         <div class="armazenamento_opcoes">
-                            <button class="opcao" *ngFor="let item of produto.armazenamento">{{item}}</button>
+                            <button class="opcao" *ngFor="let item of produto?.armazenamento">{{item}}</button>
                         </div>
                     </div>
 
@@ -58,20 +58,17 @@
             <p class="desc_relacionados">Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
 
 
-            <p-carousel [value]="images" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+            <p-carousel [value]="produtos" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
                 <ng-template let-item pTemplate="item">
-                  <div class="categoria_item">
-                    <img [src]="item.source" [alt]="item.alt">
-                    <div class="cores">
-                      <div class="cor1"></div>
-                      <div class="cor2"></div>
-                      <div class="cor3"></div>
-                      <div class="cor4"></div>
+                  <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)">
+                    <img  [src]="item.miniatura">
+                    <div class="cores_categoria">
+                        <div class="cor_1_categoria" *ngFor="let i of item.cores" [style.background-color]="i.hexadecimal"></div>
                     </div>
-                    <h2 class="dispositivo">{{ item.title }}</h2>
-                    <p class="armazenamento">128GB</p>
-                    <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-                    <p class="parcelado">ou 10x de R$104,90 sem juros</p>
+                    <h2 class="dispositivo">{{ item.nome }}</h2>
+                    <p class="armazenamento_categoria">{{ maiorArmazenamento([item]) }}</p>
+                    <p class="partir_categoria">a partir de <span class="valor_categoria">{{ item.preco }}</span></p>
+                    <p class="parcelado_categoria">ou 10x de {{ formatarParcelado(item.preco) }}</p>
                   </div>
                 </ng-template>
               </p-carousel>
