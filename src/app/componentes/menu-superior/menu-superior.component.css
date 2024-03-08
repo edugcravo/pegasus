@@ -1,9 +1,6 @@
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
 
-*{
-    margin: 0;
-    padding: 0;
+ul{
+    margin-bottom: 0px;
 }
 
 a{
@@ -57,6 +54,14 @@ a{
     display: none;
 }
 
+.menu_hamburguer{
+    display: none;
+}
+
+::ng-deep .mat-menu-panel {
+    padding: 10px !important; /* Adicione o padding desejado aqui */
+  }
+
 @media screen and (max-width: 768px){
     .container{
         height: 44px;
@@ -75,11 +80,14 @@ a{
     }
     
 
-    .desktop{
-        display: none;
+    .desktop, .menu_desk{
+        display: none !important;
     }
+
+    .menu_hamburguer{
+        display: block;
+    }
+
+
 }
 
-::ng-deep mat-mdc-menu-item mat-mdc-focus-indicator ng-tns-c185672549-34{
-    padding: 10px !important;
-}

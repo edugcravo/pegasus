@@ -6,7 +6,7 @@
     <div class="banner">
       <h1>Seu iPhone novo está aqui!</h1>
       <p>Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
-      <button>Falar com consultor</button>
+      <button (click)="redirecionarParaWhatsapp()">Falar com consultor</button>
     </div>
 
   </div>
@@ -16,7 +16,7 @@
       <div class="texto_esquerda">
         <h1>iPhones Semi-novos</h1>
         <p>Compre seu iPhone semi-novo aqui na Pegasus.</p>
-        <span>Falar com consultor</span>
+        <span (click)="redirecionarParaWhatsapp()" class="consul">Falar com consultor</span>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
       <div class="texto_direita">
         <h1>iPhones Novos</h1>
         <p>Compre seu iPhone novo aqui na Pegasus.</p>
-        <span>Falar com consultor</span>
+        <span (click)="redirecionarParaWhatsapp()" class="consul">Falar com consultor</span>
       </div>
 
     </div>
@@ -38,15 +38,12 @@
     </div>
 
 
-    <p-carousel [value]="produtos" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+    <p-carousel [value]="produtos_iphone" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
       <ng-template let-item pTemplate="item">
         <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)">
           <img  [src]="item.miniatura">
           <div class="cores">
-            <div class="cor1"></div>
-            <div class="cor2"></div>
-            <div class="cor3"></div>
-            <div class="cor4"></div>
+            <div class="cor1" *ngFor="let i of item?.cores" [style.background-color]="i?.hexadecimal"></div>
           </div>
           <h2 class="dispositivo">{{ item.nome }}</h2>
           <p class="armazenamento">{{ maiorArmazenamento([item]) }}</p>
@@ -65,15 +62,12 @@
     </div>
 
 
-    <p-carousel [value]="imagesAcessorios" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptionsMac">
+    <p-carousel [value]="produtos_mac" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptionsMac">
       <ng-template let-item pTemplate="item">
-        <div class="categoria_item">
-          <img [src]="item.source" [alt]="item.alt">
+        <div class="categoria_item" (click)="redirecionarParaOproduto(item.id)">
+          <img [src]="item.miniatura" >
           <div class="cores_mac">
-            <div class="cor1"></div>
-            <div class="cor2"></div>
-            <div class="cor3"></div>
-            <div class="cor4"></div>
+            <div class="cor1" *ngFor="let i of item?.cores" [style.background-color]="i?.hexadecimal"></div>
           </div>
           <h2 class="dispositivo">{{ item.title }}</h2>
           <p class="armazenamento">128GB</p>

@@ -25,10 +25,9 @@ export class CategoriasComponent implements OnInit {
   recebeProdutos(categoria: any){
     this.produtoService.getProdutoCategoria(categoria).subscribe((res: any) => {
       this.produtos = res.produtos;
-
+      this.categoria = this.produtos[0].categoria;
 
       this.produtos.forEach((element: any, index: number) => {
-        console.log(element)
         element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
       });
         
@@ -52,8 +51,9 @@ export class CategoriasComponent implements OnInit {
 
 recebeCategorias(){
   this.produtoService.getCategorias().subscribe((res: any) => {
-    console.log(res)
     this.categorias = res.categorias
+    //pegar a chave do objeto
+    this.categorias = Object.keys(this.categorias)
   })
 }
 

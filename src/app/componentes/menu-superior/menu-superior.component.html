@@ -8,27 +8,23 @@
 
 
     <div class="menu">
-      <ul>
+      <!-- menu hamburguer caso seja celular -->
+      <div class="menu_hamburguer">
+        <button mat-button [matMenuTriggerFor]="menu" class="botao-menu"><mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <ul class="menu_desk">
         <li>
           <button mat-button [matMenuTriggerFor]="menu" class="botao-menu">Produtos</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="redirecionaCategoria('iphone')">Iphones</button>
-            <button mat-menu-item [matMenuTriggerFor]="macbooks" (click)="redirecionaCategoria('macbook')">MacBooks</button>
-            <button mat-menu-item [matMenuTriggerFor]="ipads" (click)="redirecionaCategoria('ipad')">Ipads</button>
+            <ng-container *ngFor="let categoria of categorias | keyvalue">
+              <button mat-menu-item [matMenuTriggerFor]="submenu" (click)="redirecionaCategoria(categoria.key)">{{categoria.key}}</button>
+              <mat-menu #submenu="matMenu">
+                <button mat-menu-item *ngFor="let subcategoria of categoria.value" (click)="redirecionaProduto(subcategoria.id)">{{subcategoria.nome}}</button>
+              </mat-menu>
+            </ng-container>
           </mat-menu>
-
-          <mat-menu #macbooks="matMenu">
-            <button mat-menu-item>MacBook Air</button>
-            <button mat-menu-item>MacBook Pro</button>
-            <button mat-menu-item>MacBook M2</button>
-          </mat-menu>
-
-          <mat-menu #ipads="matMenu">
-            <button mat-menu-item>Ipad Air</button>
-            <button mat-menu-item>Ipad Pro</button>
-            <button mat-menu-item>Ipad Mini</button>
-          </mat-menu>
-
         </li>
         <li><a >Contato</a></li>
         <li><a >Sobre</a></li>

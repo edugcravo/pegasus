@@ -17,6 +17,7 @@ export class ProdutoComponent implements OnInit {
   constructor(private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router, private _sanitizer:DomSanitizer) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.recebeProduto()
   }
 
@@ -111,7 +112,11 @@ export class ProdutoComponent implements OnInit {
 }
 
 redirecionarParaOproduto(id: any) {
+  console.log('chamando')
   localStorage.setItem('idProduto', id);
-  this.router.navigate(['/produto']);
+  // atualizar infos
+  this.recebeProduto()
+  // scrollar para cima
+  window.scrollTo(0, 0);
 }
 }

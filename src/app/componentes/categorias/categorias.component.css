@@ -2,6 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.container{
+  max-width: 100% !important;
+}
+
+.titulo{
+  padding-right: 50px !important;
+}
+
 .categoria_item {
     display: flex;
     flex-direction: column;
@@ -67,3 +75,18 @@
     margin-bottom: 8px;
   }
   
+  .mac{
+    width: 100% !important;
+    max-width: 200px !important;
+  }
+
+  @media screen and (max-width: 768px){
+    .categoria{
+      display: none !important;
+    }
+
+    .cont{
+      justify-content: center !important;
+      text-align: center;
+    }
+  }

@@ -146,6 +146,9 @@
     
 }
 
+.consul{
+    cursor: pointer;
+}
 
 .categorias{
     margin-bottom: 150px !important;
@@ -172,6 +175,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.categoria_item img{
+    max-width: 380px;
 }
 
 .img_celular img{
@@ -323,6 +330,11 @@
     white-space: nowrap;
     width: 80%;
 
+}
+
+.cor_1{
+    width: 20px;
+    height: 20px;
 }
 
 

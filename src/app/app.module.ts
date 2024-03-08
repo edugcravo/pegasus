@@ -23,6 +23,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import {MatIconModule} from '@angular/material/icon';
  // Import the SlickCarouselModule from the correct package
 
 
@@ -52,7 +53,8 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
         MatMenuModule,
         MatExpansionModule,
         NzUploadModule,
-        NzModalModule
+        NzModalModule,
+        MatIconModule
         
     ],
     providers: [

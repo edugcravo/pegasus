@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   
 
   panelOpenState = false;
-  produtos: any;
+  produtos_iphone: any;
+  produtos_mac: any;
 
   constructor(private produtoService: ProdutoService, private _sanitizer:DomSanitizer, private router: Router) { }
   ngOnInit() {
@@ -66,15 +67,21 @@ export class HomeComponent implements OnInit {
 
   recebeProdutos(){
     this.produtoService.getProdutos().subscribe((res: any) => {
-      this.produtos = res.produtos
-      console.log(this.produtos)
+      // colcoar os produtos com categoria iphone na variavel produtos_iphone e os com categoria mac na variavel produtos_mac
+      this.produtos_iphone = res.produtos.filter((produto: any) => produto.categoria === 'iphone');
 
-       this.produtos.forEach((element: any) => {
+
+      this.produtos_mac = res.produtos.filter((produto: any) => produto.categoria === 'macbook');
+
+       this.produtos_iphone.forEach((element: any) => {
         element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
        });
+
+        this.produtos_mac.forEach((element: any) => {
+          element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
+        });
     
 
-      // console.log(this.produtos)
     })
   }
 
@@ -111,6 +118,17 @@ redirecionarParaOproduto(id: any) {
   this.router.navigate(['/produto']);
 }
 
+redirecionarParaWhatsapp() {
+  // Número de telefone do WhatsApp (substitua pelo seu número)
+  const numeroWhatsapp = '5541999802380';
+  // Mensagem pré-pronta
+  const mensagem = 'Olá, gostaria de saber mais sobre os serviços da empresa';
 
+  // Cria o link para o WhatsApp com o número e a mensagem
+  const url = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+
+  // Redireciona para o WhatsApp
+  window.open(url, '_blank');
+}
   
 }

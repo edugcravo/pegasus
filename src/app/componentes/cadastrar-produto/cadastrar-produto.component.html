@@ -19,10 +19,9 @@
 
         <div class="desc_produto">
             <h1 class="titulo">{{modelo}}</h1>
-            
 
             <button class="desconto">-{{desconto}}%</button>
-            <p class="valor" ><span>R${{preco}}</span> no PIX</p>
+            <p class="valor"><span>R${{preco}}</span> no PIX</p>
             <p class="parcelado">ou <b>10x</b> de <b>R${{parcelado}}</b> sem juros</p>
 
             <div class="cor">
@@ -43,7 +42,7 @@
                 <p>Calcular o prazo de entrega</p>
                 <input type="text" placeholder="Insira seu CEP">
             </div>
-                
+
             <button class="consultor">Falar com consultor</button>
 
             <div class="detalhes">
@@ -53,117 +52,91 @@
 
         </div>
     </div>
-    
+
     <div class="conteudo_cadastro">
+        <h1>Cadastrar produto</h1>
 
-    <h1>Cadastrar produto</h1>
-
-    <form action="" (ngSubmit)="onSubmit()">
-        <div class="cadastro_modelo">
-            <label for="nome_produto" >Modelo:</label>
-            <input type="text" [(ngModel)]="modelo" name="modelo">
-        </div>
-
-        <div class="cadastro_desconto">
-            <label for="desconto_produto" >Desconto:</label>
-            <input type="text" [(ngModel)]="desconto" name="desconto">
-        </div>
-        
-        <div class="cadastro_preco">
-            <label for="preco_produto" >Preço:</label>
-            <input type="text" [(ngModel)]="preco" (input)="arrumaParcelado()" name="preco">
-        </div>
-
-        <div class="cadastro_cor">
-            <label>Cor:</label>
-            <div class="cores">
-                <div *ngFor="let item of coresDemonstracao" class="color-box" [style.background-color]="item.hexadecimal" [style.border]="cores.includes(item) ? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
+        <form class="form-cadastro" (ngSubmit)="onSubmit()">
+            <div class="cadastro_modelo">
+                <label for="nome_produto">Modelo:</label>
+                <input type="text" [(ngModel)]="modelo" name="modelo">
             </div>
-        </div>
 
-        <div class="cadastro_armazenamento">
-            <label>Armazenamento:</label>
-            <div class="armazenamento_opcoes">
-                <div class="armazenamento_opcoes">
-                <nz-select nzAllowClear nzPlaceHolder="Select OS" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="armazenamento" name="armazenamento">
-                    <nz-option *ngFor="let item of armazenamentoDemonstracao" [nzLabel]="item.quantidade" [nzValue]="item" ></nz-option>
-                </nz-select>
-                <ng-template #multipleTemplate let-selected>
-                    <div class="ant-select-selection-item-content">
-                    {{ selected.nzLabel }}
+            <div class="cadastro_desconto">
+                <label for="desconto_produto">Desconto:</label>
+                <input type="text" [(ngModel)]="desconto" name="desconto">
+            </div>
 
-                    </div>
-                </ng-template>
+            <div class="cadastro_preco">
+                <label for="preco_produto">Preço:</label>
+                <input type="text" [(ngModel)]="preco" (input)="arrumaParcelado()" name="preco">
+            </div>
+
+            <div class="cadastro_cor">
+                <label>Cor:</label>
+                <div class="cores">
+                    <div *ngFor="let item of coresDemonstracao" class="color-box" [style.background-color]="item.hexadecimal" [style.border]="cores.includes(item) ? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="cadastro_descricao">
-            <label >Descrição:</label>
-            <textarea [(ngModel)]="descricao" name="descricao"></textarea>
-        </div>
-
-        <div class="cadastro_categoria">
-            <label>Categoria:</label>
-            <nz-select nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="categoria" name="categoria">
-                <nz-option nzLabel="Iphone" nzValue="iphone"></nz-option>
-                <nz-option nzLabel="Macbook" nzValue="macbook"></nz-option>
-                <nz-option nzLabel="Ipad" nzValue="ipad"></nz-option>
-            </nz-select>
-        </div>
-
-        <div class="imagens_produto">
-            <nz-upload
-            nzListType="picture-card"
-            [nzPreview]="handlePreview"
-            [nzBeforeUpload]="beforeUpload"
-            [(ngModel)]="imagens"
-            >
-            <div>
-                <span nz-icon nzType="plus"></span>
-                <div style="margin-top: 8px">Upload fotos produto</div>
+            <div class="cadastro_armazenamento">
+                <label>Armazenamento:</label>
+                <div class="armazenamento_opcoes">
+                    <nz-select nzAllowClear nzPlaceHolder="Select OS" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="armazenamento" name="armazenamento">
+                        <nz-option *ngFor="let item of armazenamentoDemonstracao" [nzLabel]="item.quantidade" [nzValue]="item"></nz-option>
+                    </nz-select>
+                    <ng-template #multipleTemplate let-selected>
+                        <div class="ant-select-selection-item-content">
+                            {{ selected.nzLabel }}
+                        </div>
+                    </ng-template>
+                </div>
             </div>
-            </nz-upload>
-            <nz-modal
-            [nzVisible]="previewVisible"
-            [nzContent]="modalContent"
-            [nzFooter]="null"
-            (nzOnCancel)="previewVisible = false"
-            >
-            <ng-template #modalContent>
-                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-            </ng-template>
-            </nz-modal>
-        </div>
 
-        <div class="miniatura">
-            <nz-upload
-            nzListType="picture-card"
-            [nzPreview]="handlePreview"
-            [nzBeforeUpload]="beforeUploadMiniatura"
-            [(ngModel)]="miniatura"
-            >
-            <div>
-                <span nz-icon nzType="plus"></span>
-                <div style="margin-top: 8px">Upload foto miniatura</div>
+            <div class="cadastro_descricao">
+                <label>Descrição:</label>
+                <textarea [(ngModel)]="descricao" name="descricao"></textarea>
             </div>
-            </nz-upload>
-            <nz-modal
-            [nzVisible]="previewVisible"
-            [nzContent]="modalContent"
-            [nzFooter]="null"
-            (nzOnCancel)="previewVisible = false"
-            >
-            <ng-template #modalContent>
-                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-            </ng-template>
-            </nz-modal>
-        </div>
 
+            <div class="cadastro_categoria">
+                <label>Categoria:</label>
+                <nz-select nzAllowClear nzPlaceHolder="Selecione a categoria" [(ngModel)]="categoria" name="categoria">
+                    <nz-option nzLabel="Iphone" nzValue="iphone"></nz-option>
+                    <nz-option nzLabel="Macbook" nzValue="macbook"></nz-option>
+                    <nz-option nzLabel="Ipad" nzValue="ipad"></nz-option>
+                </nz-select>
+            </div>
 
-        <button type="submit">Cadastrar Produto</button>
-    </form>
+            <div class="imagens_produto">
+                <nz-upload nzListType="picture-card" [nzPreview]="handlePreview" [nzBeforeUpload]="beforeUpload" [(ngModel)]="imagens">
+                    <div>
+                        <span nz-icon nzType="plus"></span>
+                        <div style="margin-top: 8px">Upload fotos produto</div>
+                    </div>
+                </nz-upload>
+                <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+                    <ng-template #modalContent>
+                        <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                </nz-modal>
+            </div>
+
+            <div class="miniatura">
+                <nz-upload nzListType="picture-card" [nzPreview]="handlePreview" [nzBeforeUpload]="beforeUploadMiniatura" [(ngModel)]="miniatura">
+                    <div>
+                        <span nz-icon nzType="plus"></span>
+                        <div style="margin-top: 8px">Upload foto miniatura</div>
+                    </div>
+                </nz-upload>
+                <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+                    <ng-template #modalContent>
+                        <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                </nz-modal>
+            </div>
+
+            <button type="submit" class="button-submit">Cadastrar Produto</button>
+        </form>
     </div>
-
 
 </div>
