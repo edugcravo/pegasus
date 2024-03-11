@@ -67,10 +67,11 @@ export class ProdutoComponent implements OnInit {
   }
 
   produtos: any;
+  estado: any = 'novo';
   produtosRelacionados(categoria: any) {
-    this.produtoService.getProdutoCategoria(categoria).subscribe((res: any) => {
+    this.produtoService.getProdutoCategoria(categoria, this.estado).subscribe((res: any) => {
       const produtos = res.produtos.filter((element: any) => element.id !== this.produto.id);
-  
+      console.log(res)
       this.produtos = produtos.map((element: any) => {
         return {
           ...element,
@@ -78,9 +79,19 @@ export class ProdutoComponent implements OnInit {
         };
       });
   
-      console.log(this.produtos);
+      if (this.produtos.length == 0) {
+        this.produtoService.getProdutosDestaquesExceto(this.produto.id).subscribe((res: any) => {
+          this.produtos = res.produtos.map((element: any) => {
+            return {
+              ...element,
+              miniatura: this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura)
+            };
+          });
+        });
+      }
     });
   }
+
 
 
   maiorArmazenamento(produtos: any[]): string {

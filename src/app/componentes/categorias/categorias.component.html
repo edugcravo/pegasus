@@ -10,7 +10,16 @@
     </ul>
   </div>
   <div class="w-3/4 p-8">
-    <h1 class="text-3xl font-bold mb-8">{{categoria | titlecase}}</h1>
+    <h1 class="text-3xl font-bold mb-8">
+      {{categoria | titlecase}} 
+      <mat-button-toggle-group [(ngModel)]="estado" (ngModelChange)="mudaEstado()">
+      <mat-button-toggle value="todos">Todos</mat-button-toggle>
+      <mat-button-toggle value="novo">Novo</mat-button-toggle>
+      <mat-button-toggle value="semi-novo">Semi-novo</mat-button-toggle>
+      </mat-button-toggle-group> 
+    </h1>
+    <!-- escolher se quer ver usado ou novo -->
+    
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" >
       <div class="bg-white rounded-lg shadow-lg p-4 categoria_item img_celular" *ngFor="let item of produtos" (click)="redirecionarParaOproduto(item.id)">

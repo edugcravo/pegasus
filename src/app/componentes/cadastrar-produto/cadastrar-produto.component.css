@@ -214,7 +214,7 @@
 
 /* cadastro */
 
-.cadastro_modelo, .cadastro_desconto, .cadastro_preco, .cadastro_cor, .cadastro_armazenamento, .cadastro_descricao, .cadastro_categoria{
+.cadastro_modelo, .cadastro_desconto, .cadastro_preco, .cadastro_cor, .cadastro_armazenamento, .cadastro_descricao, .cadastro_categoria, .cadastro_novo_semi{
     width: 370px;
     display: flex;
     justify-content: space-between;

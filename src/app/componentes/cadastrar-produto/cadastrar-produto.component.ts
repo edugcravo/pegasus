@@ -29,6 +29,7 @@ export class CadastrarProdutoComponent implements OnInit {
   imagens: any = []
   miniatura: any;
   categoria: any;
+  novoSemi: any;
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -58,7 +59,8 @@ export class CadastrarProdutoComponent implements OnInit {
       ativo: true,
       imagens: this.imagens,
       miniatura: this.miniatura,
-      categoria: this.categoria
+      categoria: this.categoria,
+      estado: this.novoSemi
     }
 
     this.produtoService.cadastrarProduto(dados).subscribe((res: any) => {

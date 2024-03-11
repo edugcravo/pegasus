@@ -38,10 +38,6 @@
                 </div>
             </div>
 
-            <div class="prazo">
-                <p>Calcular o prazo de entrega</p>
-                <input type="text" placeholder="Insira seu CEP">
-            </div>
 
             <button class="consultor">Falar com consultor</button>
 
@@ -77,6 +73,19 @@
                 <div class="cores">
                     <div *ngFor="let item of coresDemonstracao" class="color-box" [style.background-color]="item.hexadecimal" [style.border]="cores.includes(item) ? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
                 </div>
+            </div>
+
+            <div class="cadastro_novo_semi">
+                <label>Estado:</label>
+                <nz-select nzAllowClear nzPlaceHolder="Select o estado" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="novoSemi" name="novoSemi">
+                    <nz-option  nzLabel="Novo" nzValue="novo"></nz-option>
+                    <nz-option  nzLabel="Semi-novo" nzValue="semi-novo"></nz-option>
+                </nz-select>
+                <ng-template #multipleTemplate let-selected>
+                    <div class="ant-select-selection-item-content">
+                        {{ selected.nzLabel }}
+                    </div>
+                </ng-template>
             </div>
 
             <div class="cadastro_armazenamento">

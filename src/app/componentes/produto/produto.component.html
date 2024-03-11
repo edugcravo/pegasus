@@ -29,18 +29,18 @@
                         </div>
                     </div>
 
-                    <div class="armazenamento">
+                    <div class="armazenamento" *ngIf="produto?.armazenamento != ''">
                         <p>Armazenamento:</p>
                         <div class="armazenamento_opcoes">
                             <button class="opcao" *ngFor="let item of produto?.armazenamento">{{item}}</button>
                         </div>
                     </div>
 
-                    <div class="prazo">
+                    <!-- <div class="prazo">
                         <p>Calcular o prazo de entrega</p>
                         <input type="text" placeholder="Insira seu CEP">
                     </div>
-                        
+                         -->
                     <button class="consultor">Falar com consultor</button>
 
                     <div class="detalhes">
@@ -53,14 +53,14 @@
         </div>
 
 
-        <div class="produtos_relacionados">
+        <div class="produtos_relacionados" >
             <h1>Produtos relacionados</h1>
             <p class="desc_relacionados">Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
 
 
             <p-carousel [value]="produtos" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-                <ng-template let-item pTemplate="item">
-                  <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)">
+                <ng-template let-item pTemplate="item" >
+                  <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)" >
                     <img  [src]="item.miniatura">
                     <div class="cores_categoria">
                         <div class="cor_1_categoria" *ngFor="let i of item.cores" [style.background-color]="i.hexadecimal"></div>

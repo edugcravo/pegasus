@@ -15,24 +15,20 @@ export class HomeComponent implements OnInit {
   produtos_iphone: any;
   produtos_mac: any;
 
+  videos = [
+    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/RNU1dSaPSaU?si=fbMfsApGdl16pv3p'),
+    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/UtCsWBEbBg8?si=B0pJBy7eV_6nj4YX'),
+    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/pxGxo8ZGJa0?si=5vukPwp5tOTz0H9F'),
+    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Whg-QL1LFo8?si=Ep9TkoTiM_Aa_2vj')
+  ];
+
   constructor(private produtoService: ProdutoService, private _sanitizer:DomSanitizer, private router: Router) { }
   ngOnInit() {
     this.recebeProdutos()
+    this.produtoPorCategoria()
   }
 
-  images = [
-    {source:'assets/imagens/iphone.png', alt:'Description for Image 1', title:'iPhone 13'},
-    {source:'assets/imagens/iphone.png', alt:'Description for Image 2', title:'iPhone 11'},
-    {source:'assets/imagens/iphone.png', alt:'Description for Image 3', title:'iPhone 15 Pro Max'},
-    {source:'assets/imagens/iphone.png', alt:'Description for Image 4', title:'iPhone 15 '},
-    {source:'assets/imagens/iphone.png', alt:'Description for Image 5', title:'iPhone 14 Pro Max'},
-  ];
-
-  imagesAcessorios = [
-    {source:'assets/imagens/macbook_air_m1.avif', alt:'Description for Image 1', title:'MacBook Air m1'},
-    {source:'assets/imagens/macbook_air_m2.avif', alt:'Description for Image 1', title:'MacBook Air m2'},
-    {source:'assets/imagens/macbook_pro.png', alt:'Description for Image 2', title:'MacBook pro'},
-  ]
+ 
   
   responsiveOptions = [
     {
@@ -64,6 +60,7 @@ export class HomeComponent implements OnInit {
       numScroll: 1
     }
   ];
+  
 
   recebeProdutos(){
     this.produtoService.getProdutos().subscribe((res: any) => {
@@ -131,4 +128,25 @@ redirecionarParaWhatsapp() {
   window.open(url, '_blank');
 }
   
+produtoCategoria: any;
+
+
+produtoPorCategoria(){
+  this.produtoService.getUmProdutoPorCategoria().subscribe((res: any) => {
+    this.produtoCategoria = res.produtos;
+    console.log(this.produtoCategoria)
+    this.produtoCategoria.forEach((element: any) => {
+      element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
+     });
+  })
+}
+
+
+redirecionaCategoria(categoria: any, estado?: any){
+  localStorage.setItem('categoria', categoria);
+  if(estado){
+    localStorage.setItem('estado', estado);
+  }
+  this.router.navigate(['/categorias']);
+}
 }

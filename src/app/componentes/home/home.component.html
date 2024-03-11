@@ -11,20 +11,18 @@
 
   </div>
 
-  <div class="blocos_secundarios">
+  <div class="blocos_secundarios" (click)="redirecionaCategoria('iphone','semi-novo')">
     <div class="bloco_esquerda_secundario">
       <div class="texto_esquerda">
         <h1>iPhones Semi-novos</h1>
         <p>Compre seu iPhone semi-novo aqui na Pegasus.</p>
-        <span (click)="redirecionarParaWhatsapp()" class="consul">Falar com consultor</span>
       </div>
     </div>
 
-    <div class="bloco_direita_secundario">
+    <div class="bloco_direita_secundario" (click)="redirecionaCategoria('iphone', 'novo')">
       <div class="texto_direita">
         <h1>iPhones Novos</h1>
         <p>Compre seu iPhone novo aqui na Pegasus.</p>
-        <span (click)="redirecionarParaWhatsapp()" class="consul">Falar com consultor</span>
       </div>
 
     </div>
@@ -46,33 +44,27 @@
             <div class="cor1" *ngFor="let i of item?.cores" [style.background-color]="i?.hexadecimal"></div>
           </div>
           <h2 class="dispositivo">{{ item.nome }}</h2>
-          <p class="armazenamento">{{ maiorArmazenamento([item]) }}</p>
           <p class="partir">a partir de <span class="valor">{{ item.preco }}</span></p>
-          <p class="parcelado">ou 10x de {{ formatarParcelado(item.preco) }}</p>
+          <p class="parcelado">ou até 18x de {{ formatarParcelado(item.preco) }}</p>
         </div>
       </ng-template>
     </p-carousel>
   </div>
 
 
-  <div class="categorias">
+  <div class="categorias mac">
     <div class="titulo_categorias_mac">
       <h1>Produtos Mac</h1>
       <p>Compre seu Mac aqui na Pegasus. Fale com um de nossos consultores</p>
     </div>
-
-
-    <p-carousel [value]="produtos_mac" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptionsMac">
+  
+    <p-carousel [value]="produtoCategoria" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
       <ng-template let-item pTemplate="item">
-        <div class="categoria_item" (click)="redirecionarParaOproduto(item.id)">
-          <img [src]="item.miniatura" >
-          <div class="cores_mac">
-            <div class="cor1" *ngFor="let i of item?.cores" [style.background-color]="i?.hexadecimal"></div>
+        <div class="categoria_item catalago" (click)="redirecionaCategoria(item.categoria)">
+          <div class="imagem_categoria">
+            <img [src]="item.miniatura">
           </div>
-          <h2 class="dispositivo">{{ item.title }}</h2>
-          <p class="armazenamento">128GB</p>
-          <p class="partir">a partir de <span class="valor">1.049,90</span></p>
-          <p class="parcelado">ou 10x de R$104,90 sem juros</p>
+          <h2 class="dispositivo_categoria">{{ item.categoria }}</h2>
         </div>
       </ng-template>
     </p-carousel>
@@ -87,27 +79,13 @@
 
     <div class="blocos_review">
 
-
-
-      <div class="bloco_review">
-        <iframe width="238px" height="372px" src="https://www.youtube.com/embed/RNU1dSaPSaU?si=fbMfsApGdl16pv3p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-      </div>
-
-      <div class="bloco_review">
-        <iframe width="238px" height="372px" src="https://www.youtube.com/embed/UtCsWBEbBg8?si=B0pJBy7eV_6nj4YX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-      </div>
-
-      <div class="bloco_review">
-        <iframe width="238px" height="372px" src="https://www.youtube.com/embed/pxGxo8ZGJa0?si=5vukPwp5tOTz0H9F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-      </div>
-
-      <div class="bloco_review">
-        <iframe width="238px" height="372px" src="https://www.youtube.com/embed/Whg-QL1LFo8?si=Ep9TkoTiM_Aa_2vj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-      </div>
+      <p-carousel [value]="videos" [numVisible]="4" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+        <ng-template let-item pTemplate="item">
+          <div class="review_item" >
+            <iframe [src]="item" width="238px" height="372px"></iframe>
+          </div>
+        </ng-template>
+      </p-carousel>
 
     </div>
 

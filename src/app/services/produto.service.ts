@@ -30,9 +30,10 @@ getProdutoId(id: any){
   return this.http.get(this.url + '/produto/lista-id/' + id, {headers: this.headers});
 }
 
-getProdutoCategoria(categoria: any){
-  return this.http.get(this.url + '/produto/lista-categoria/' + categoria, {headers: this.headers});
+getProdutoCategoria(categoria: string, estado: string) {
+  return this.http.get(`${this.url}/produto/lista-categoria/${categoria}/${estado}`, {headers: this.headers});
 }
+
 
 getCores(){
   return this.http.get(this.url + '/cores/listar', {headers: this.headers});
@@ -46,4 +47,18 @@ getArmazenamento(){
 getCategorias(){
   return this.http.get(this.url + '/produto/categorias', {headers: this.headers});
 }
+
+getUmProdutoPorCategoria(){
+  return this.http.get(this.url + '/produto/destaques', {headers: this.headers});
+}
+
+getProdutosDestaquesExceto(id: any){
+  return this.http.get(`${this.url}/produto/destaques-exeto-produto/${id}`, {headers: this.headers});
+
+}
+
+recebeProdutoPorEstadoEcategoria(estado: any, categoria: any){
+  return this.http.get(`${this.url}/produto/lista-categoria-estado/${categoria}/${estado}`, {headers: this.headers});
+}
+
 }

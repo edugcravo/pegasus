@@ -122,11 +122,19 @@
     margin-bottom: 50px;
 }
 
+::ng-deep .p-carousel-items-container {
+    align-items: center !important;
+}
+
 .titulo_categorias_mac{
     text-align: center;
-    margin-bottom: -50px;
+    /* margin-bottom: -50px;
     position: relative; 
-    z-index: 1001;
+    z-index: 1001; */
+}
+
+.titulo_categorias_mac p{
+    margin-bottom: 10px;
 }
 
 .titulo_categorias h1, .titulo_categorias_mac h1{
@@ -156,6 +164,10 @@
     margin: auto;
 }
 
+.mac{
+    width: 70%;
+}
+
 ::ng-deep .categorias button{
     border: none;
     background: transparent;
@@ -170,15 +182,31 @@
 
 }
 
-.categoria_item{
+.categoria_item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+  }
+  
+  .imagem_categoria {
+    height: 200px; /* Defina a altura desejada para a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
+  }
+  
+
+.catalago{
+    height: 230px;
 }
 
-.categoria_item img{
-    max-width: 380px;
+.categoria_item img {
+    max-width: 200px;
+    max-height: 200px; /* Altura fixa para manter a consistência */
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço mantendo a proporção */
 }
 
 .img_celular img{
@@ -231,6 +259,12 @@
     margin-bottom: 8px;
 }
 
+.dispositivo_categoria{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20.1px;
+}
+
 .armazenamento{
     font-size: 13px;
     font-weight: 300;
@@ -258,11 +292,7 @@
 .partir{
     margin-bottom: 8px;
 }
-.bloco_review {
-    width: 238px;
-    height: 372px;
-    border-radius: 14px;
-}
+
 
 .bloco_review iframe{
     border-radius: 13px;
@@ -322,24 +352,23 @@
     line-height: 15px;
 }
 
-.blocos_review{
-    gap: 30px;
-    display: flex;
-    justify-content: center;
-    overflow-x: auto; /* barra lateral horizontal quando necessário */
-    white-space: nowrap;
-    width: 80%;
-
-}
-
 .cor_1{
     width: 20px;
     height: 20px;
 }
 
+.blocos_review{
+    width: 75%;
+}
 
+.review_item iframe{
+    border-radius: 15px;
+}
 
-
+.review_item{
+    display: flex;
+    justify-content: center;
+}
 
 /* media querys para celulares e dispositivos */
 @media screen and (max-width: 768px){
@@ -347,10 +376,18 @@
         flex-direction: column;
     }
 
+    .blocos_review{
+        width: 100%;
+    }
+
     .bloco_esquerda_secundario, .bloco_direita_secundario{
         width: 100%;
     height: 209.86px;
 
+    }
+
+    .categoria_item img{
+        max-width: 100% !important;
     }
 
     .banner{
@@ -463,3 +500,6 @@
     .ultimo{
         border-bottom: none !important;
     }
+
+
+      
