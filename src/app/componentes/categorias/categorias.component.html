@@ -12,7 +12,7 @@
   <div class="w-3/4 p-8">
     <h1 class="text-3xl font-bold mb-8">
       {{categoria | titlecase}} 
-      <mat-button-toggle-group [(ngModel)]="estado" (ngModelChange)="mudaEstado()">
+      <mat-button-toggle-group [(ngModel)]="estado" (ngModelChange)="mudaEstado()" *ngIf="categoria == 'iphone' || categoria == 'iphones'">
       <mat-button-toggle value="todos">Todos</mat-button-toggle>
       <mat-button-toggle value="novo">Novo</mat-button-toggle>
       <mat-button-toggle value="semi-novo">Semi-novo</mat-button-toggle>

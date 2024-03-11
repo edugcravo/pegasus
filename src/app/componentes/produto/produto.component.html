@@ -30,10 +30,18 @@
                     </div>
 
                     <div class="armazenamento" *ngIf="produto?.armazenamento != ''">
-                        <p>Armazenamento:</p>
+                        <p>Armazenamento</p>
                         <div class="armazenamento_opcoes">
                             <button class="opcao" *ngFor="let item of produto?.armazenamento">{{item}}</button>
                         </div>
+                    </div>
+
+                    <div class="pronta_entrega_ou_encomenda">
+                        <p>Modo de entrega</p>
+                        <mat-button-toggle-group >
+                            <mat-button-toggle value="pronta">Pronta Entrega</mat-button-toggle>
+                            <mat-button-toggle value="encomenda">Encomenda</mat-button-toggle>
+                        </mat-button-toggle-group> 
                     </div>
 
                     <!-- <div class="prazo">
