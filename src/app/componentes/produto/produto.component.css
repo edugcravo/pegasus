@@ -309,5 +309,9 @@
         margin-top: 25px;
         margin-left: unset;
     }
+    
+    .foto_principal{
+        width: 100%;
+    }
 }
 

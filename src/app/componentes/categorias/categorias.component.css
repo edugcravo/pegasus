@@ -4,6 +4,16 @@
 
 .container{
   max-width: 100% !important;
+  min-height: calc(100vh - 172px);
+}
+
+.bloco_categoria{
+  padding: 2rem;
+}
+
+.categoria{
+  height: unset;
+  min-height: calc(100vh - 172px);
 }
 
 .titulo{
@@ -88,5 +98,9 @@
     .cont{
       justify-content: center !important;
       text-align: center;
+    }
+
+    .container{
+      min-height: calc(100vh - 136px) !important;
     }
   }

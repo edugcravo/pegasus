@@ -25,11 +25,18 @@ export class CategoriasComponent implements OnInit {
 
 
   recebeProdutos(categoria: any){
-
+    console.log(categoria)
     console.log(this.estado)
-    this.estado = localStorage.getItem('estado')
+    if(categoria == 'iphone'){
+      this.estado = localStorage.getItem('estado')
+    }else{
+      this.estado = 'todos'
+      localStorage.setItem('estado', this.estado)
+    }
+
     if(this.estado == 'novo' || this.estado == 'semi-novo'){
       this.mudaEstado()
+      console.log('caindo aqui')
       return
     }
 
