@@ -24,22 +24,22 @@
                     <div class="cor">
                         <p>Cor</p>
                         <div class="cores">
-                            <div class="cor_1" *ngFor="let item of produto?.cores" [style.background-color]="item?.hexadecimal"></div>
-
+                            <div class="cor_1" *ngFor="let item of produto?.cores" [style.background-color]="item?.hexadecimal" [style.border]="cores == item? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
+<!--   -->
                         </div>
                     </div>
 
                     <div class="armazenamento" *ngIf="produto?.armazenamento != ''">
                         <p>Armazenamento</p>
                         <div class="armazenamento_opcoes">
-                            <button class="opcao" *ngFor="let item of produto?.armazenamento">{{item}}</button>
+                            <button class="opcao" *ngFor="let item of produto?.armazenamento" [style.border]="armazenamento == item? '2px solid green' : '1px solid #EFEFEF'" (click)="removeOuAdicionaArmazenamento(item)">{{item}}</button>
                         </div>
                     </div>
 
                     <div class="pronta_entrega_ou_encomenda">
                         <p>Modo de entrega</p>
-                        <mat-button-toggle-group >
-                            <mat-button-toggle value="pronta">Pronta Entrega</mat-button-toggle>
+                        <mat-button-toggle-group  [(ngModel)]="estadowhatsapp">
+                            <mat-button-toggle value="pronta entrega">Pronta Entrega</mat-button-toggle>
                             <mat-button-toggle value="encomenda">Encomenda</mat-button-toggle>
                         </mat-button-toggle-group> 
                     </div>
@@ -49,7 +49,7 @@
                         <input type="text" placeholder="Insira seu CEP">
                     </div>
                          -->
-                    <button class="consultor">Falar com consultor</button>
+                    <button class="consultor" (click)="redirecionarParaWhatsapp()">Finalizar com vendedor</button>
 
                     <div class="detalhes">
                         <h1>Detalhes do produto</h1>

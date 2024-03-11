@@ -130,4 +130,41 @@ redirecionarParaOproduto(id: any) {
   // scrollar para cima
   window.scrollTo(0, 0);
 }
+
+redirecionarParaWhatsapp() {
+  // Número de telefone do WhatsApp (substitua pelo seu número)
+  const numeroWhatsapp = '5541999802380';
+  // Mensagem pré-pronta
+  const mensagem = 'Olá, tenho interesse no produto a seguir:' + this.produto.nome + ' - ' + this.produto.preco + ' - ' + this.armazenamento + ' - ' + this.cor + ' - ' + this.estadowhatsapp ;
+
+  // Cria o link para o WhatsApp com o número e a mensagem
+  const url = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+
+  // Redireciona para o WhatsApp
+  window.open(url, '_blank');
+}
+
+cor: any;
+armazenamento: any;
+estadowhatsapp: any;
+
+
+definirArmazenamento(armazenamento: any) {
+  console.log(armazenamento)
+  this.armazenamento = armazenamento;
+}
+
+cores: any;
+
+removeOuAdicionaCor(item: any) {
+  console.log(item)
+  this.cores = item
+  this.cor = item.nome
+}
+
+removeOuAdicionaArmazenamento(item: any) {
+  console.log(item)
+  this.armazenamento = item
+}
+
 }
