@@ -24,7 +24,10 @@
                     <div class="cor">
                         <p>Cor</p>
                         <div class="cores">
-                            <div class="cor_1" *ngFor="let item of produto?.cores" [style.background-color]="item?.hexadecimal" [style.border]="cores == item? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
+                            <div class="cor_1" *ngFor="let item of produto?.cores" 
+                            mat-raised-button #tooltip="matTooltip"
+                            [matTooltip]="item.nome" 
+                            [style.background-color]="item?.hexadecimal" [style.border]="cores == item? '2px solid green' : 'transparent'" (click)="removeOuAdicionaCor(item)"></div>
 <!--   -->
                         </div>
                     </div>
@@ -39,8 +42,8 @@
                     <div class="pronta_entrega_ou_encomenda">
                         <p>Modo de entrega</p>
                         <mat-button-toggle-group  [(ngModel)]="estadowhatsapp">
-                            <mat-button-toggle value="pronta entrega">Pronta Entrega</mat-button-toggle>
-                            <mat-button-toggle value="encomenda">Encomenda</mat-button-toggle>
+                            <mat-button-toggle value="pronta entrega" [disabled]="produto?.formaEnvio == 'Encomenda' && produto?.formaEnvio != 'todos'">Pronta Entrega</mat-button-toggle>
+                            <mat-button-toggle value="encomenda" [disabled]="produto?.formaEnvio == 'Pronta entrega' && produto?.formaEnvio != 'todos'">Encomenda</mat-button-toggle>
                         </mat-button-toggle-group> 
                     </div>
 

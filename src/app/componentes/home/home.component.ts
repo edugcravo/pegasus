@@ -117,7 +117,7 @@ redirecionarParaOproduto(id: any) {
 
 redirecionarParaWhatsapp() {
   // Número de telefone do WhatsApp (substitua pelo seu número)
-  const numeroWhatsapp = '5541999802380';
+  const numeroWhatsapp = '5541998846963';
   // Mensagem pré-pronta
   const mensagem = 'Olá, gostaria de saber mais sobre os serviços da empresa';
 

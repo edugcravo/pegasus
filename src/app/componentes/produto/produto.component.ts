@@ -49,7 +49,6 @@ export class ProdutoComponent implements OnInit {
 
   recebeProduto(){
     this.produtoService.getProdutoId(localStorage.getItem('idProduto')).subscribe((res: any) => {
-      console.log(res)
       this.produto = res.produto
       this.produtosRelacionados(this.produto.categoria)
       this.imagemPrincipal = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + this.produto.imagens[0]);
@@ -58,7 +57,6 @@ export class ProdutoComponent implements OnInit {
         this.produto.imagens[index] = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element);
       });
   
-      console.log(this.produto)
     });
   }
 
@@ -71,7 +69,6 @@ export class ProdutoComponent implements OnInit {
   produtosRelacionados(categoria: any) {
     this.produtoService.getProdutoCategoria(categoria, this.estado).subscribe((res: any) => {
       const produtos = res.produtos.filter((element: any) => element.id !== this.produto.id);
-      console.log(res)
       this.produtos = produtos.map((element: any) => {
         return {
           ...element,
@@ -123,7 +120,6 @@ export class ProdutoComponent implements OnInit {
 }
 
 redirecionarParaOproduto(id: any) {
-  console.log('chamando')
   localStorage.setItem('idProduto', id);
   // atualizar infos
   this.recebeProduto()
@@ -133,7 +129,7 @@ redirecionarParaOproduto(id: any) {
 
 redirecionarParaWhatsapp() {
   // Número de telefone do WhatsApp (substitua pelo seu número)
-  const numeroWhatsapp = '5541999802380';
+  const numeroWhatsapp = '5541998846963';
   // Mensagem pré-pronta
   const mensagem = 'Olá, tenho interesse no produto a seguir:' + this.produto.nome + ' - ' + this.produto.preco + ' - ' + this.armazenamento + ' - ' + this.cor + ' - ' + this.estadowhatsapp ;
 
@@ -150,20 +146,17 @@ estadowhatsapp: any;
 
 
 definirArmazenamento(armazenamento: any) {
-  console.log(armazenamento)
   this.armazenamento = armazenamento;
 }
 
 cores: any;
 
 removeOuAdicionaCor(item: any) {
-  console.log(item)
   this.cores = item
   this.cor = item.nome
 }
 
 removeOuAdicionaArmazenamento(item: any) {
-  console.log(item)
   this.armazenamento = item
 }
 

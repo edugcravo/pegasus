@@ -30,6 +30,8 @@ export class CadastrarProdutoComponent implements OnInit {
   miniatura: any;
   categoria: any;
   novoSemi: any;
+  formaDisponiveis: any;
+  formaDisponiveisDemonstracao: any = ['Pronta entrega', 'Encomenda']
 
   constructor(private produtoService: ProdutoService) { }
 
@@ -39,9 +41,20 @@ export class CadastrarProdutoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.miniatura)
+
+    console.log(this.novoSemi)
+
+    if(this.formaDisponiveis.length == 2){
+      this.formaDisponiveis = 'todos'
+    }else{
+      this.formaDisponiveis = this.formaDisponiveis[0];
+    }
+
+    console.log(this.formaDisponiveis)
+
     let cores = this.cores.map((cor: any) => cor.id);
     let armazenamento = this.armazenamento.map((armazenamento: any) => armazenamento.id);
+    
 
     if(this.modelo && this.desconto && this.preco && this.parcelado && this.armazenamento && this.descricao && this.cores && this.imagens){
       console.log('Formulário enviado');
@@ -60,7 +73,8 @@ export class CadastrarProdutoComponent implements OnInit {
       imagens: this.imagens,
       miniatura: this.miniatura,
       categoria: this.categoria,
-      estado: this.novoSemi
+      estado: this.novoSemi,
+      formaEnvio: this.formaDisponiveis
     }
 
     this.produtoService.cadastrarProduto(dados).subscribe((res: any) => {

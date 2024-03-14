@@ -25,6 +25,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
  // Import the SlickCarouselModule from the correct package
 
 
@@ -56,7 +57,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
         NzUploadModule,
         NzModalModule,
         MatIconModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatTooltipModule
         
     ],
     providers: [

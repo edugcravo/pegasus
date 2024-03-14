@@ -77,15 +77,10 @@
 
             <div class="cadastro_novo_semi">
                 <label>Estado:</label>
-                <nz-select nzAllowClear nzPlaceHolder="Select o estado" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="novoSemi" name="novoSemi">
+                <nz-select nzAllowClear nzPlaceHolder="Selecione a categoria" [(ngModel)]="novoSemi" name="novoSemi">
                     <nz-option  nzLabel="Novo" nzValue="novo"></nz-option>
                     <nz-option  nzLabel="Semi-novo" nzValue="semi-novo"></nz-option>
                 </nz-select>
-                <ng-template #multipleTemplate let-selected>
-                    <div class="ant-select-selection-item-content">
-                        {{ selected.nzLabel }}
-                    </div>
-                </ng-template>
             </div>
 
             <div class="cadastro_armazenamento">
@@ -114,6 +109,20 @@
                     <nz-option nzLabel="Macbook" nzValue="macbook"></nz-option>
                     <nz-option nzLabel="Ipad" nzValue="ipad"></nz-option>
                 </nz-select>
+            </div>
+
+            <div class="formaEnvio">
+                <label>Forma de envio:</label>
+                <div class="forma_opcoes">
+                    <nz-select nzAllowClear nzPlaceHolder="Selecione" nzMode="multiple" [nzCustomTemplate]="multipleTemplate" [(ngModel)]="formaDisponiveis" name="formaDisponiveis">
+                        <nz-option *ngFor="let item of formaDisponiveisDemonstracao" [nzLabel]="item" [nzValue]="item"></nz-option>
+                    </nz-select>
+                    <ng-template #multipleTemplate let-selected>
+                        <div class="ant-select-selection-item-content">
+                            {{ selected.nzLabel }}
+                        </div>
+                    </ng-template>
+                </div>
             </div>
 
             <div class="imagens_produto">
