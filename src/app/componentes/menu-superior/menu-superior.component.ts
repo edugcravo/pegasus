@@ -54,5 +54,11 @@ export class MenuSuperiorComponent implements OnInit {
   }
 
   
+  usuarioLogado: any = localStorage.getItem('token');
+
+  sair(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
+  }
 
 }

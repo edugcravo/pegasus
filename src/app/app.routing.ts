@@ -7,6 +7,7 @@ import { ProdutoComponent } from './componentes/produto/produto.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { CadastrarProdutoComponent } from './componentes/cadastrar-produto/cadastrar-produto.component';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
+import { AuthGuard } from './autentica/AuthGuard';
 
 
 
@@ -16,7 +17,7 @@ export const APP_ROUTES: Routes = [
   { path: 'contato', component: ContatoComponent },
   { path: 'produto', component: ProdutoComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cadastra', component: CadastrarProdutoComponent },
+  { path: 'cadastra', component: CadastrarProdutoComponent, canActivate: [AuthGuard] },
   { path: 'categorias', component: CategoriasComponent }
 ];
 
