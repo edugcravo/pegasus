@@ -1,7 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../../services/produto.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalPreencherComponent } from '../modal-preencher/modal-preencher.component';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -9,144 +10,125 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+  arquivo: any;
+  produtos: any; // Array para armazenar produtos
+  produtosPorNCM: { [key: string]: any[] } = {}; // Agrupar produtos por NCM
+  tabela: boolean = false; // Para controlar a exibição da tabela
+  modalidades = ['IMPORTACAO', 'NACIONAL']; // Exemplos
+  situacoes = ['ATIVADO', 'DESATIVADO']; // Exemplos
 
-  panelOpenState = false;
-  produtos_iphone: any;
-  produtos_mac: any;
+  constructor(private produtoService: ProdutoService, private dialog: MatDialog) { }
 
-  videos = [
-    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/RNU1dSaPSaU?si=fbMfsApGdl16pv3p'),
-    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/UtCsWBEbBg8?si=B0pJBy7eV_6nj4YX'),
-    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/pxGxo8ZGJa0?si=5vukPwp5tOTz0H9F'),
-    this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/Whg-QL1LFo8?si=Ep9TkoTiM_Aa_2vj')
-  ];
+  ngOnInit() {}
 
-  constructor(private produtoService: ProdutoService, private _sanitizer:DomSanitizer, private router: Router) { }
-  ngOnInit() {
-    this.recebeProdutos()
-    this.produtoPorCategoria()
+  onFileChange(event: any) {
+    this.arquivo = event.target.files[0]; // Armazenando o arquivo selecionado
   }
 
- 
+  uploadProduto() {
+    if (this.arquivo) {
+      const formData = new FormData();
+      formData.append('file', this.arquivo);
   
-  responsiveOptions = [
-    {
-      breakpoint: '1024px',
-      numVisible: 3,
-      numScroll: 3
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 2,
-      numScroll: 2
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
-
-  responsiveOptionsMac = [
-    {
-      breakpoint: '1024px',
-      numVisible: 2,
-      numScroll: 2
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
-  
-
-  recebeProdutos(){
-    this.produtoService.getProdutos().subscribe((res: any) => {
-      // colcoar os produtos com categoria iphone na variavel produtos_iphone e os com categoria mac na variavel produtos_mac
-      this.produtos_iphone = res.produtos.filter((produto: any) => produto.categoria === 'iphone');
-
-
-      this.produtos_mac = res.produtos.filter((produto: any) => produto.categoria === 'macbook');
-
-       this.produtos_iphone.forEach((element: any) => {
-        element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
-       });
-
-        this.produtos_mac.forEach((element: any) => {
-          element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
-        });
-    
-
-    })
-  }
-
-  maiorArmazenamento(produtos: any[]): string {
-    let maior = 0;
-    produtos.forEach((produto) => {
-      produto.armazenamento.forEach((armazenamento: any) => {
-        const gb = parseInt(armazenamento.replace('GB', ''));
-        if (gb > maior) {
-          maior = gb;
+      this.produtoService.uploadProduto(formData).subscribe((uploadResponse: any) => {
+        if (uploadResponse) {
+          setTimeout(() => {
+            this.produtoService.getProdutos().subscribe((produtosResponse: any) => {
+              this.produtos = produtosResponse; // Atualiza os produtos
+              this.filtrarPorNCM(); // Agrupar por NCM
+              this.tabela = true; 
+            }, (error) => {
+              console.error('Erro ao obter produtos', error);
+            });
+          }, 500);
         }
+      }, (error) => {
+        console.error('Erro no upload', error);
+      });
+    } else {
+      console.error('Nenhum arquivo selecionado.');
+    }
+  }
+
+  filtrarPorNCM() {
+    this.produtosPorNCM = this.produtos.reduce((acc: any, produto: any) => {
+      const ncm = produto.ncm;
+      if (!acc[ncm]) {
+        acc[ncm] = [];
+      }
+      acc[ncm].push(produto);
+      return acc;
+    }, {});
+  }
+
+  enviarProdutos(ncm: string) {
+    const produtosAgrupados = this.produtosPorNCM[ncm].map(produto => {
+      return {
+        seq: produto.seq,
+        denominacao: produto.denominacao,
+        descricao: produto.descricao,
+        cpfCnpjRaiz: produto.cpfCnpjRaiz,
+        situacao: produto.situacao,
+        modalidade: produto.modalidade,
+        ncm: produto.ncm,
+        atributos: produto.atributos.map((atributo: any) => ({
+          atributo: atributo.atributo,
+          valor: atributo.valor
+        })),
+        codigosInterno: produto.codigosInterno,
+        dataReferencia: null
+      };
+    });
+  
+    this.produtoService.enviarProdutos(produtosAgrupados).subscribe((response: any) => {
+      if (response.mensagens_de_erro) {
+        // Cria um Set para remover mensagens duplicadas
+        const mensagensUnicas = Array.from(new Set(response.mensagens_de_erro));
+        Swal.fire({
+          title: 'Error!',
+          text: mensagensUnicas.join(', '), // Junte as mensagens únicas
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      } else {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Produtos enviados com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        });
+      }
+    }, error => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Ocorreu um erro inesperado.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
       });
     });
-    return `${maior}GB`;
   }
 
+abrirModal(ncm: string, produtos: any[]) {
+  const dialogRef = this.dialog.open(ModalPreencherComponent, {
+    data: { 
+      ncm: ncm,
+      cpfCnpj: produtos[0].cpfCnpjRaiz, // Passa o CPF/CNPJ do primeiro produto como referência
+      atributos: produtos[0].atributos // Passa os atributos do primeiro produto
+    }
+  });
 
-  formatarParcelado(preco: any): string {
-    // Remove todos os caracteres não numéricos
-    let precoNumerico = preco.replace(/\D/g, "");
-
-    // Adiciona a vírgula como separador decimal
-    precoNumerico = precoNumerico.replace(/(\d)(\d{2})$/, "$1,$2");
-
-    // Calcula o valor da parcela
-    let parcelado = parseFloat(precoNumerico) / 10;
-
-    // Formata o valor da parcela
-    return parcelado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      produtos.forEach(produto => {
+        produto.ncm = result.ncm; // Atualiza todos com o novo NCM
+        produto.cpfCnpjRaiz = result.cpfCnpj; // Atualiza todos com o novo CPF/CNPJ
+        produto.atributos.forEach((atributo: any, index: number) => {
+          atributo.valor = result.atributos[index].valor; // Atualiza os atributos
+        });
+      });
+    }
+  });
 }
 
-redirecionarParaOproduto(id: any) {
-  localStorage.setItem('idProduto', id);
-  this.router.navigate(['/produto']);
-}
-
-redirecionarParaWhatsapp() {
-  // Número de telefone do WhatsApp (substitua pelo seu número)
-  const numeroWhatsapp = '5541998846963';
-  // Mensagem pré-pronta
-  const mensagem = 'Olá, gostaria de saber mais sobre os serviços da empresa';
-
-  // Cria o link para o WhatsApp com o número e a mensagem
-  const url = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
-
-  // Redireciona para o WhatsApp
-  window.open(url, '_blank');
-}
   
-produtoCategoria: any;
-
-
-produtoPorCategoria(){
-  this.produtoService.getUmProdutoPorCategoria().subscribe((res: any) => {
-    this.produtoCategoria = res.produtos;
-    console.log(this.produtoCategoria)
-    this.produtoCategoria.forEach((element: any) => {
-      element.miniatura = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + element.miniatura);
-     });
-  })
-}
-
-
-redirecionaCategoria(categoria: any, estado?: any){
-  localStorage.setItem('categoria', categoria);
-  if(estado){
-    localStorage.setItem('estado', estado);
-  }
-  this.router.navigate(['/categorias']);
-}
 }

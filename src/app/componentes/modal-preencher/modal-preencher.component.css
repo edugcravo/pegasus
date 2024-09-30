@@ -1,0 +1,100 @@
+.ncm-card {
+    background-color: #ffffff; /* Cor de fundo */
+    border: 1px solid #ddd; /* Bordas do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Espaçamento entre cards */
+}
+
+.ncm-card h2 {
+    font-size: 1.5em; /* Tamanho da fonte do título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    color: #333; /* Cor do texto */
+}
+
+.tabela {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal na tabela */
+    margin-top: 10px; /* Espaçamento acima da tabela */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre células */
+}
+
+th, td {
+    padding: 10px; /* Espaçamento dentro das células */
+    text-align: left; /* Alinhamento do texto */
+    border: 1px solid #ddd; /* Bordas para as células */
+}
+
+th {
+    background-color: #4CAF50; /* Cor de fundo dos cabeçalhos */
+    color: white; /* Cor do texto dos cabeçalhos */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Efeito de hover para as linhas */
+}
+
+.botoes {
+    margin-top: 10px; /* Espaçamento acima dos botões */
+    text-align: right; /* Alinhamento à direita */
+}
+
+.botoes button {
+    background-color: #007BFF; /* Cor do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Sem borda */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave para o hover */
+}
+
+.botoes button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+/* Estilos do Modal */
+.form-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+}
+
+label {
+    font-weight: bold; /* Destaca o texto do rótulo */
+    margin-bottom: 5px; /* Espaçamento entre o rótulo e o campo */
+    display: block; /* Faz o rótulo ocupar toda a linha */
+}
+
+mat-form-field {
+    width: 100%; /* Faz o campo ocupar toda a largura disponível */
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+}
+
+.mat-button {
+    background-color: #007BFF; /* Cor dos botões do modal */
+    color: white; /* Cor do texto dos botões do modal */
+    border: none; /* Sem borda */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave para o hover */
+    margin-left: 15px;
+}
+
+.mat-button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+
+img{
+    width: 15px;
+    height: 15px;
+}

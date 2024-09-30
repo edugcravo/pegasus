@@ -1,505 +1,177 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
-
-.container{
-    max-width: unset;
+.body {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    scrollbar-width: thin; /* Largura da barra de rolagem */
+    scrollbar-color: #ccc #f1f1f1; /* Cor da barra de rolagem e do fundo */
+}
+.tabela::-webkit-scrollbar {
+    width: 8px !important; /* Largura da barra de rolagem vertical */
+    height: 8px !important; /* Altura da barra de rolagem horizontal */
 }
 
-.banner{
-    height: 640px;
-    background-image: url('../../../assets/imagens/banner.png');
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-color: #000000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}   
-
-.banner button{
-    background: #0094FF;
-    padding: 8px 18px 8px 18px;
-    border-radius: 41px;
-    border: none;
-    color: white;
-    margin-top: 10px;
+.tabela::-webkit-scrollbar-track {
+    background: #f1f1f1 !important; /* Cor do fundo da barra de rolagem */
+    border-radius: 20px !important; /* Bordas arredondadas do fundo */
 }
 
-.banner h1{
-    padding-top: 100px;
-    font-weight: 700;
-    font-size: 34px;
-    line-height: 39.1px;
+.tabela::-webkit-scrollbar-thumb {
+    background: #ccc !important; /* Cor da barra de rolagem */
+    border-radius: 20px !important; /* Bordas arredondadas da barra */
 }
 
-.banner p{
-    font-size: 16px;
-    line-height: 18.4px;
-    margin-top: 10px;
+.tabela::-webkit-scrollbar-thumb:hover {
+    background: #aaa !important; /* Cor da barra ao passar o mouse */
 }
 
-.banner h1, .banner p{
-    color: white;
+/* Para navegadores Firefox */
+.tabela {
+    scrollbar-width: thin !important; /* Largura da barra de rolagem */
+    scrollbar-color: #ccc #f1f1f1 !important; /* Cor da barra de rolagem e do fundo */
+    border-radius: 50px !important
 }
 
-.blocos_secundarios{
-    display:flex;
-    gap: 15px;
-    margin: 10px 10px 0 10px;
-    
-}
-
-.bloco_esquerda_secundario, .bloco_direita_secundario{
-    background: #F7F7F7;
-    height: 536px;
-    width: 50%;
-}
-
-.bloco_esquerda_secundario, .bloco_direita_secundario{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.bloco_esquerda_secundario {
-    background-image: url('../../../assets/imagens/semi.png');
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: 55%; /* Torna a imagem responsiva */
-    align-items: flex-end;
-}
-
-.bloco_direita_secundario {
-    background-image: url('../../../assets/imagens/novo.png');
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 55%; /* Torna a imagem responsiva */
-    align-items: flex-start;
-
-}
-
-.texto_esquerda{
-    text-align: center;
-    margin-right: 30px;
-}
-
-.texto_esquerda h1, .texto_direita h1{
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 39px;
-}
-
-.texto_esquerda p, .texto_direita p{
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 18px;
-
-}
-
-.blocos_secundarios p{
-    color: black;
-    margin-top: 12px;
-    margin-bottom: 10px;
-}
-
-.blocos_secundarios span{
-    color: #0094FF;
-}
-
-
-.texto_direita{
-    text-align: center;
-    margin-left: 30px;
-}
-
-.titulo_categorias{
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-::ng-deep .p-carousel-items-container {
-    align-items: center !important;
-}
-
-.titulo_categorias_mac{
-    text-align: center;
-    /* margin-bottom: -50px;
-    position: relative; 
-    z-index: 1001; */
-}
-
-.titulo_categorias_mac p{
-    margin-bottom: 10px;
-}
-
-.titulo_categorias h1, .titulo_categorias_mac h1{
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28px;
-
-
-}
-
-.titulo_categorias p, .titulo_categorias_mac p{
-    color: black;
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 18px;
-    
-}
-
-.consul{
-    cursor: pointer;
-}
-
-.categorias{
-    margin-bottom: 150px !important;
-    width: 90%;
-    margin: auto;
-}
-
-.mac{
-    width: 70%;
-}
-
-::ng-deep .categorias button{
-    border: none;
-    background: transparent;
-}
-
-.categorias_itens{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: auto;
-
-}
-
-.categoria_item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .imagem_categoria {
-    height: 200px; /* Defina a altura desejada para a imagem */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
-  }
-  
-
-.catalago{
-    height: 230px;
-}
-
-.categoria_item img {
-    max-width: 200px;
-    max-height: 200px; /* Altura fixa para manter a consistência */
-    object-fit: cover; /* Faz a imagem cobrir todo o espaço mantendo a proporção */
-}
-
-.img_celular img{
-    width: 112px;
-}
-
-.cores{
-    gap: 6px;
-    display: flex;
-    justify-content: center;
-    margin-top: 36px;
-    margin-bottom: 8px;
-}
-
-.cores_mac{
-    gap: 6px;
-    display: flex;
-    justify-content: center;
-    margin-top: -50px;
-    margin-bottom: 8px;
-}
-
-.cor1, .cor2, .cor3, .cor4{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.cor1{
-    background-color: #223E4A;
-}
-
-.cor2{
-    background-color: #FAE6C9;
-}
-
-.cor3{
-    background-color: #403F3C;
-}
-
-.cor4{
-    background-color: #DCDED8;
-}
-
-
-.dispositivo{
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18.1px;
-    margin-bottom: 8px;
-}
-
-.dispositivo_categoria{
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 20.1px;
-}
-
-.armazenamento{
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 15px;
-    margin-bottom: 8px;
-}
-
-.valor{
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 20px;
-    color: #0094FF;
-
-}
-
-.partir, .parcelado{
-    color: #656565;
-    font-family: Helvetica;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 16px;
-
-}
-
-.partir{
-    margin-bottom: 8px;
-}
-
-
-.bloco_review iframe{
-    border-radius: 13px;
-}
-
-.review{
-
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.titulo_review{
-    text-align: center;
+.upload {
     margin-bottom: 20px;
 }
 
-.titulo_review h1{
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28px;
-
-
-}
-
-.titulo_review p{
-    color: #656565;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-top: 10px;
-}
-
-.conteudo_topo{
+.linha-upload{
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15px 10px;
 }
 
-.conteudo_topo h1{
-    color: white;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 18px;
-    margin-bottom: 5px;
+.btn-upload, .btn-preencher, .btn-enviar {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    cursor: pointer; /* Mão ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave */
+
 }
 
-.conteudo_topo p{
-    color: white;
-    font-family: Helvetica;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 15px;
+.btn-preencher, .btn-enviar{
+    margin: 15px 0px 15px 15px;
 }
 
-.cor_1{
-    width: 20px;
-    height: 20px;
+.btn-upload:hover, .btn-preencher:hover, .btn-enviar:hover {
+    background-color: #45a049; /* Verde escuro ao passar o mouse */
 }
 
-.blocos_review{
-    width: 75%;
-}
-
-.review_item iframe{
-    border-radius: 15px;
-}
-
-.review_item{
+.botoes {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
-/* media querys para celulares e dispositivos */
-@media screen and (max-width: 768px){
-    .blocos_secundarios{
-        flex-direction: column;
-    }
-
-    .blocos_review{
-        width: 100%;
-    }
-
-    .bloco_esquerda_secundario, .bloco_direita_secundario{
-        width: 100%;
-    height: 209.86px;
-
-    }
-
-    .categoria_item img{
-        max-width: 100% !important;
-    }
-
-    .banner{
-        background-size: 150%;
-    }
-    
-    .texto_direita, .texto_esquerda{
-        width: 274px;
-        margin: 0;
-    }
-
-    .bloco_esquerda_secundario{
-        background-position: unset;
-    }
-
-    .perguntas{
-        width: 90% !important;
-    }
-  
+.ncm-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 570px){
-    .texto_direita, .texto_esquerda{
-        width: 176px;
-        margin: 0;
-    }
-
-    .bloco_esquerda_secundario{
-        background-position: left bottom; 
-    }
-
-    .perguntas{
-        width: 90% !important;
-    }
+.tabela {
+    width: 100%;
+    overflow-x: auto;
 }
 
-/* 
-@media screen and (max-width: 375px){
-    .banner{
-        background-size: 100%;
-    }
-} */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
 
-.accordion {
+th {
+    color: black;
+    border-top: none !important; /* Remove a linha superior do cabeçalho */
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.descricao, .denominacao {
+    min-width: 300px;
+}
+
+.info {
+    width: 15px;
+    height: 15px;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    overflow: auto;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
-  
-  .accordion-item {
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .accordion-header {
+    font-size: 14px;
+}
+
+textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.topo-card {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+}
+
+.custom-file-upload {
+    display: inline-flex;
+    align-items: center;
     padding: 10px;
     cursor: pointer;
-  }
-  
-  .accordion-content {
-    padding: 10px;
-    display: none;
-  }
-  
-  .accordion-content.active {
-    display: block;
-  }
-  
-  .accordion-icon {
-    width: 24px;
-    height: 24px;
-  }
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-right: 20px;
+}
 
-  .perguntas h1{
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28px;
-    text-align: center;
-    margin-top: 150px;
-    margin-bottom: 30px;
-  }
+.custom-file-upload:hover {
+    background-color: #f1f1f1;
+    border-color: #4CAF50;
+}
 
-  .perguntas{
-    width: 60%;
-    max-width: 900px;
-    margin: auto;
-    margin-bottom: 150px;
-  }
+.custom-file-upload input[type="file"] {
+    display: none; /* Oculta o input original */
+}
 
-  ::ng-deep mat-expansion-panel{
-     box-shadow: none !important; 
-     padding: 10px 0 10px 0 !important;
-  }
+.upload-icon {
+    width: 20px; /* Ajuste o tamanho conforme necessário */
+    height: 20px; /* Ajuste o tamanho conforme necessário */
+    margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+}
 
-  /* aplicar borda inferior menos no ultimo */
-    ::ng-deep mat-expansion-panel{
-        border-bottom: 1px solid #ddd !important;
+.animated {
+    display: none; /* Oculta o GIF por padrão */
+}
+
+.custom-file-upload:hover .animated {
+    display: inline; /* Mostra o GIF ao passar o mouse */
+}
+
+.custom-file-upload:hover .static {
+    display: none; /* Oculta a imagem estática ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+    th, td {
+        font-size: 14px;
     }
-
-  ::ng-deep mat-panel-title{
-    font-weight: 700 !important;
-    font-size: 18px !important;
-  }
-
-    ::ng-deep mat-expansion-panel p{
-        font-size: 16px !important;
-    }
-
-    .ultimo{
-        border-bottom: none !important;
-    }
-
-
-      
+}

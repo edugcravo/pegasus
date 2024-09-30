@@ -1,0 +1,39 @@
+.header {
+    background-color: #fff; /* Cor de fundo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 10px 20px; /* Espaçamento */
+}
+
+.container {
+    display: flex; /* Flexbox para alinhamento */
+    justify-content: space-between; /* Espaço entre logo e nav */
+    align-items: center; /* Alinhamento vertical */
+    max-width: 1200px; /* Largura máxima */
+    margin: auto; /* Centraliza */
+}
+
+.logo {
+    height: 50px; /* Altura da logo */
+}
+
+.nav ul {
+    list-style: none; /* Remove marcadores */
+    display: flex; /* Alinha itens em linha */
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove preenchimento */
+}
+
+.nav li {
+    margin-left: 20px; /* Espaçamento entre links */
+}
+
+.nav a {
+    text-decoration: none; /* Remove sublinhado */
+    color: #333; /* Cor do texto */
+    font-weight: 500; /* Peso da fonte */
+    transition: color 0.3s; /* Transição suave */
+}
+
+.nav a:hover {
+    color: #4CAF50; /* Cor ao passar o mouse */
+}

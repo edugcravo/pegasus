@@ -5,16 +5,11 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MenuSuperiorComponent } from './componentes/menu-superior/menu-superior.component';
-import { HomeComponent } from './componentes/home/home.component';
 import { routing } from './app.routing';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { ContatoComponent } from './componentes/contato/contato.component';
 import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { CarouselModule } from 'primeng/carousel';
-import { ProdutoComponent } from './componentes/produto/produto.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { CadastrarProdutoComponent } from './componentes/cadastrar-produto/cadastrar-produto.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
@@ -22,10 +17,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { CategoriasComponent } from './componentes/categorias/categorias.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table'; // Importando o MatTableModule
+import { HomeComponent } from './componentes/home/home.component';
+import {MatSelectModule} from '@angular/material/select';
+import { ModalPreencherComponent } from './componentes/modal-preencher/modal-preencher.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import { HeaderComponent } from './componentes/header/header.component';
+
  // Import the SlickCarouselModule from the correct package
 
 
@@ -33,14 +36,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
-        MenuSuperiorComponent,
-        ContatoComponent,
         RodapeComponent,
-        ProdutoComponent,
         LoginComponent,
-        CadastrarProdutoComponent,
-        CategoriasComponent
+        HomeComponent,
+        ModalPreencherComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -58,7 +58,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         NzModalModule,
         MatIconModule,
         MatButtonToggleModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatChipsModule,
+        MatTableModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatInputModule
         
     ],
     providers: [

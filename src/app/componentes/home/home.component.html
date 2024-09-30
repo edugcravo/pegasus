@@ -1,156 +1,99 @@
-
-<app-menu-superior></app-menu-superior>
-
+<app-header></app-header>
 <div class="container">
-  <div class="conteudo">
-    <div class="banner">
-      <h1>Seu iPhone novo está aqui!</h1>
-      <p>Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
-      <button (click)="redirecionarParaWhatsapp()">Falar com consultor</button>
-    </div>
-
-  </div>
-
-  <div class="blocos_secundarios" (click)="redirecionaCategoria('iphone','semi-novo')">
-    <div class="bloco_esquerda_secundario">
-      <div class="texto_esquerda">
-        <h1>iPhones Semi-novos</h1>
-        <p>Compre seu iPhone semi-novo aqui na Pegasus.</p>
-      </div>
-    </div>
-
-    <div class="bloco_direita_secundario" (click)="redirecionaCategoria('iphone', 'novo')">
-      <div class="texto_direita">
-        <h1>iPhones Novos</h1>
-        <p>Compre seu iPhone novo aqui na Pegasus.</p>
+  <div class="body">
+    <div class="upload">
+      <h1>Upar arquivo</h1>
+      <div class="linha-upload">
+        <label class="custom-file-upload">
+          <input type="file" (change)="onFileChange($event)" />
+          <img src="assets/imagens/upload-stop.png" alt="Upload" class="upload-icon static" />
+          <img src="assets/imagens/upload.gif" alt="Upload" class="upload-icon animated" />
+          Escolher arquivo
+        </label>
+      <button class="btn-upload" (click)="uploadProduto()">Upload</button>
       </div>
 
-    </div>
   </div>
 
 
-  <div class="categorias">
-    <div class="titulo_categorias">
-      <h1>Seu iPhone está aqui!</h1>
-      <p>Compre seu iPhone aqui na Pegasus. Fale com um de nossos consultores</p>
-    </div>
-
-
-    <p-carousel [value]="produtos_iphone" [numVisible]="5" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-      <ng-template let-item pTemplate="item">
-        <div class="categoria_item img_celular" (click)="redirecionarParaOproduto(item.id)">
-          <img  [src]="item.miniatura">
-          <div class="cores">
-            <div class="cor1" *ngFor="let i of item?.cores" [style.background-color]="i?.hexadecimal"></div>
-          </div>
-          <h2 class="dispositivo">{{ item.nome }}</h2>
-          <p class="partir">a partir de <span class="valor">{{ item.preco }}</span></p>
-          <p class="parcelado">ou até 18x de {{ formatarParcelado(item.preco) }}</p>
+    <div *ngIf="tabela">
+      <div *ngFor="let ncm of produtosPorNCM | keyvalue" class="ncm-card">
+        <div class="topo-card">
+          <h2>NCM: {{ ncm.key }}</h2>
+          <button class="btn-preencher" (click)="abrirModal(ncm.key, ncm.value)">Preencher em massa</button>
         </div>
-      </ng-template>
-    </p-carousel>
-  </div>
 
-
-  <div class="categorias mac">
-    <div class="titulo_categorias_mac">
-      <h1>Produtos Mac</h1>
-      <p>Compre seu Mac aqui na Pegasus. Fale com um de nossos consultores</p>
-    </div>
-  
-    <p-carousel [value]="produtoCategoria" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-      <ng-template let-item pTemplate="item">
-        <div class="categoria_item catalago" (click)="redirecionaCategoria(item.categoria)">
-          <div class="imagem_categoria">
-            <img [src]="item.miniatura">
-          </div>
-          <h2 class="dispositivo_categoria">{{ item.categoria }}</h2>
+        <div class="tabela">
+          <table>
+            <colgroup span="8"></colgroup>
+            <tr>
+              <th>Seq</th>
+              <th class="denominacao">Denominação</th>
+              <th class="descricao">Descrição</th>
+              <th>Modalidade</th>
+              <th>NCM</th>
+              <th>CPF/CNPJ</th>
+              <th>Situação</th>
+              <th>Códigos Internos</th>
+              <th *ngFor="let atributo of ncm.value[0]?.atributos">{{ atributo.nome }} 
+                <img src="assets/imagens/info.svg" alt="" class="info" mat-raised-button 
+                    #tooltip="matTooltip" [matTooltip]="atributo?.orientacao">
+              </th>
+            </tr>
+            <tr *ngFor="let produto of ncm.value">
+              <td>{{ produto.seq }}</td>
+              <td>
+                <textarea [(ngModel)]="produto.denominacao" placeholder="Denominação" rows="4"></textarea>
+                <div *ngIf="produto.denominacao?.length > 100" class="error-message">
+                  O campo Denominação do produto deve ser menor ou igual a 100 caracteres.
+                </div>
+              </td>
+              <td>
+                <textarea [(ngModel)]="produto.descricao" placeholder="Descrição" rows="4"></textarea>
+              </td>
+              <td>
+                <select [(ngModel)]="produto.modalidade">
+                  <option *ngFor="let mod of modalidades" [value]="mod">{{ mod }}</option>
+                </select>
+              </td>
+              <td>{{ produto.ncm }}</td>
+              <td>
+                <input [(ngModel)]="produto.cpfCnpjRaiz" placeholder="CPF/CNPJ" />
+              </td>
+              <td>
+                <select [(ngModel)]="produto.situacao">
+                  <option *ngFor="let sit of situacoes" [value]="sit">{{ sit }}</option>
+                </select>
+              </td>
+              <td>{{ produto.codigosInterno.join(', ') }}</td>
+              <td *ngFor="let atributo of produto.atributos">
+                <ng-container *ngIf="atributo.forma == 'BOOLEANO'; else inputTemplate">
+                  <select [(ngModel)]="atributo.valor">
+                    <option [ngValue]="true">Sim</option>
+                    <option [ngValue]="false">Não</option>
+                  </select>
+                </ng-container>
+                <ng-template #inputTemplate>
+                  <ng-container *ngIf="atributo.opcoes?.length > 0; else defaultInput">
+                    <select [(ngModel)]="atributo.valor">
+                      <option *ngFor="let opcao of atributo.opcoes" [ngValue]="opcao.valor">
+                        {{ opcao.descricao }}
+                      </option>
+                    </select>
+                  </ng-container>
+                  <ng-template #defaultInput>
+                    <input [(ngModel)]="atributo.valor" placeholder="Valor" />
+                  </ng-template>
+                </ng-template>
+              </td>
+            </tr>
+          </table>
         </div>
-      </ng-template>
-    </p-carousel>
-  </div>
 
-
-  <div class="review">
-    <div class="titulo_review">
-      <h1>Reviews</h1>
-      <p>Confira o que estão falando sobre</p>
+        <div class="botoes">
+          <button class="btn-enviar" (click)="enviarProdutos(ncm.key)">Enviar</button>
+        </div>
+      </div>
     </div>
-
-    <div class="blocos_review">
-
-      <p-carousel [value]="videos" [numVisible]="4" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-        <ng-template let-item pTemplate="item">
-          <div class="review_item" >
-            <iframe [src]="item" width="238px" height="372px"></iframe>
-          </div>
-        </ng-template>
-      </p-carousel>
-
-    </div>
-
-   
-
   </div>
-
 </div>
-
-<div class="perguntas">
-
-  <h1>Perguntas frequentes</h1>
-  
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Como funciona a importação de produtos?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Posso parcelar a compra?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis consectetur cumque commodi nam perspiciatis culpa reprehenderit et, veniam quam eos, iste blanditiis voluptate itaque maiores dolor in, similique quas! Nulla. </p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Como faço para comprar um produto?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false" class="ultimo">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Como entro em contato com a loja?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ad commodi nisi, voluptas facere quisquam voluptatum nesciunt rem hic assumenda illum aspernatur vitae voluptates, beatae deserunt ipsam recusandae. Velit.</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
-
-    
-</div>
-
-
-<app-contato></app-contato>
-<app-rodape></app-rodape>

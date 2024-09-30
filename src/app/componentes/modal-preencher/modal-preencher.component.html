@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Atualizar NCM e CPF/CNPJ</h2>
+<mat-dialog-content>
+  <div class="form-group">
+    <label>Novo NCM</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Novo NCM</mat-label>
+      <input matInput [(ngModel)]="novoNCM" placeholder="Digite o novo NCM" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <label>Novo CPF/CNPJ</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Novo CPF/CNPJ</mat-label>
+      <input matInput [(ngModel)]="novoCpfCnpj" placeholder="Digite o novo CPF/CNPJ" />
+    </mat-form-field>
+  </div>
+
+  <div *ngFor="let atributo of atributos" class="form-group">
+    <label>{{ atributo.nome }}
+      <img src="assets/imagens/info.svg" alt="" class="info" mat-raised-button 
+           #tooltip="matTooltip" [matTooltip]="atributo?.orientacao" style="margin-left: 8px; cursor: pointer;">
+    </label>
+    
+    <ng-container *ngIf="atributo.forma === 'BOOLEANO'; else optionTemplate">
+      <mat-form-field appearance="fill">
+        <mat-label>Valor</mat-label>
+        <mat-select [(ngModel)]="atributo.valor">
+          <mat-option [value]="true">Sim</mat-option>
+          <mat-option [value]="false">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-template #optionTemplate>
+      <ng-container *ngIf="atributo.opcoes?.length > 0; else inputTemplate">
+        <mat-form-field appearance="fill">
+          <mat-label>Valor</mat-label>
+          <mat-select [(ngModel)]="atributo.valor">
+            <mat-option *ngFor="let opcao of atributo.opcoes" [value]="opcao.valor">
+              {{ opcao.descricao }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      
+      <ng-template #inputTemplate>
+        <mat-form-field appearance="fill">
+          <mat-label>Valor</mat-label>
+          <input matInput [(ngModel)]="atributo.valor" placeholder="Valor" />
+        </mat-form-field>
+      </ng-template>
+    </ng-template>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="atualizar()">Atualizar</button>
+</mat-dialog-actions>
